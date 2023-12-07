@@ -47,6 +47,17 @@
   programs.git.extraConfig.core.editor = "nvim";
 
   home = {
+    activation.neovim = 
+    lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      #!/bin/bash
+      DPP_BASE=~/.cache/dpp
+
+      if [ ! -d $DPP_BASE ]; then
+        $DRY_RUN_CMD mkdir -p $DPP_BASE
+      fi
+
+      $DRY_RUN_CMD ${lib.getExe pkgs.neovim} --headless -u ~/.local/share/nvim/make_state.vim
+    '';
     packages = with pkgs; [
       lua-language-server
       nil
@@ -70,5 +81,8 @@
       { source = value; })
     (lib.filterAttrs
       (name: value: name != "nixpkgs" && name != "_type" && name != "self")
-      neovim-plugins);
+      neovim-plugins) //
+    {
+      "nvim/make_state.vim".source = ./make_state.vim;
+    };
 }
