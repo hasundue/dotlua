@@ -18,7 +18,7 @@ async function generateFlake(
   plugins: ClosedGroup,
 ) {
   try {
-    await Deno.mkdir(new URL("./dist/plugins", import.meta.url), {
+    await Deno.mkdir(new URL("./plugins", import.meta.url), {
       recursive: true,
     });
   } catch (e) {
@@ -32,7 +32,7 @@ async function generateFlake(
     return `    "${name}" = { url = "${url}"; flake = false; };`;
   });
   await Deno.writeTextFile(
-    new URL("./dist/plugins/flake.nix", import.meta.url),
+    new URL("./plugins/flake.nix", import.meta.url),
     [HEAD, lines, TAIL].flat().join("\n"),
   );
 }
