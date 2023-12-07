@@ -46,9 +46,16 @@
 
   programs.git.extraConfig.core.editor = "nvim";
 
-  home.shellAliases = rec {
-    nvim = "nvim --noplugin";
-    nv = "${nvim}";
+  home = {
+    packages = with pkgs; [
+      lua-language-server
+      nil
+      zls
+    ];
+    shellAliases = rec {
+      nvim = "nvim --noplugin";
+      nv = "${nvim}";
+    };
   };
 
   xdg.configFile = {

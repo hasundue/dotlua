@@ -103,6 +103,9 @@ local servers = {
       },
     },
   },
+  nil_ls = {
+    cmd = { "nil" },
+  },
 }
 
 for server, config in pairs(servers) do
