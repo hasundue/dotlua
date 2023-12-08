@@ -32,7 +32,8 @@ if dpp#min#load_state(s:dpp_base)
     \ call dpp#make_state(s:dpp_base, stdpath('config') .. '/rc/dpp/config.ts')
 
   autocmd dpp_init User Dpp:makeStatePost
-    \ echo '[dpp] Created ' .. s:dpp_state
+    \ echo '[dpp] Created ' .. s:dpp_state |
+    \ call dpp#min#load_state(s:dpp_base)
 else
   " Found an existing state. Check if it is up-to-date.
   autocmd dpp_init User Dpp:makeStatePost

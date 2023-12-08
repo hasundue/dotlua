@@ -1,17 +1,9 @@
-{ lib, pkgs, neovim-plugins, ... }:
+{ config, lib, pkgs, neovim-plugins, ... }:
 
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-
-    withNodeJs = false;
-    withPython3 = false;
-    withRuby = false;
-
-    # vimdiffAlias = true;
-    # vimAlias = true;
-    # viAlias = true;
 
     plugins = with pkgs.vimPlugins.nvim-treesitter-parsers; [
       bash
@@ -42,21 +34,31 @@
       yaml
       zig
     ];
+
+    vimdiffAlias = false;
+    vimAlias = false;
+    viAlias = false;
+
+    withNodeJs = false;
+    withPython3 = false;
+    withRuby = false;
   };
 
   programs.git.extraConfig.core.editor = "nvim";
 
-  home = {
-    activation.neovim = 
-    lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+  home = let
+    nvim = lib.getExe config.programs.neovim.finalPackage;
+  in {
+    activation.neovimDppMakeState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       #!/bin/bash
-      DPP_BASE=~/.cache/dpp
-
-      if [ ! -d $DPP_BASE ]; then
-        $DRY_RUN_CMD mkdir -p $DPP_BASE
+      STATE_DIR=~/.cache/dpp/nvim
+      if [ -d $STATE_DIR ]; then
+        $DRY_RUN_CMD rm -rf $STATE_DIR
       fi
+      $DRY_RUN_CMD mkdir -p $STATE_DIR
 
-      $DRY_RUN_CMD ${lib.getExe pkgs.neovim} --headless -u ~/.local/share/nvim/make_state.vim
+      # TODO: Make this work
+      # $DRY_RUN_CMD ${nvim} --headless -u ~/.local/share/nvim/make_state.vim
     '';
     packages = with pkgs; [
       lua-language-server
