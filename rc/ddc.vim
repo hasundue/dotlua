@@ -50,10 +50,10 @@ call ddc#enable()
 " hook_add {{{
 "
 inoremap <expr> <C-n> pum#visible()
-  \ ? pum#map#insert_relative(+1)
+  \ ? '<Cmd>call pum#map#insert_relative(+1)<CR>'
   \ : ddc#map#manual_complete()
 
-inoremap <expr> <C-p> pum#map#insert_relative(-1)
+inoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
 
 inoremap <expr> <TAB> pum#visible()
   \ ? '<C-n>'
@@ -62,10 +62,10 @@ inoremap <expr> <TAB> pum#visible()
   \   : ddc#map#manual_complete()
 
 inoremap <expr> <S-Tab> pum#visible()
-  \ ? pum#map#insert_relative(-1)
+  \ ? '<Cmd>call pum#map#insert_relative(-1)<CR>'
   \ : '<C-h>'
 
-inoremap <expr> <C-y> pum#map#confirm()
-inoremap <expr> <C-e> pum#map#cancel()
+inoremap <C-y> <Cmd>call pum#map#confirm()<CR>
+inoremap <C-e> <Cmd>call pum#map#cancel()<CR>
 
 " }}}
