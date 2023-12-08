@@ -23,7 +23,7 @@
     "plugin:ddc-file" = { url = "github:LumaKernel/ddc-file"; flake = false; };
     "plugin:ddc-cmdline" = { url = "github:Shougo/ddc-cmdline"; flake = false; };
     "plugin:ddc-cmdline-history" = { url = "github:Shougo/ddc-cmdline-history"; flake = false; };
-    "plugin:ddc-nvim-lsp" = { url = "github:Shougo/ddc-nvim-lsp"; flake = false; };
+    "plugin:ddc-source-lsp" = { url = "github:Shougo/ddc-source-lsp"; flake = false; };
     "plugin:ddc-ui-pum" = { url = "github:Shougo/ddc-ui-pum"; flake = false; };
     "plugin:pum.vim" = { url = "github:Shougo/pum.vim"; flake = false; };
     "plugin:ddc-fuzzy" = { url = "github:tani/ddc-fuzzy"; flake = false; };
