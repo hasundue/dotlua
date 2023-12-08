@@ -9,7 +9,7 @@ call ddc#custom#patch_global(#{
   \   ],
   \   backspaceCompletion: v:true,
   \   sources: [
-  \     'nvim-lsp',
+  \     'lsp',
   \   ],
   \   ui: 'pum',
   \ })
@@ -32,7 +32,7 @@ call ddc#custom#patch_global('sourceOptions', #{
 
 call ddc#custom#patch_global('sourceParams', #{
   \   nvim-lsp: #{
-  \     lspEngine: 'lspoints',
+  \     lspEngine: 'nvim-lsp',
   \   },
   \ })
 
