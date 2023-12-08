@@ -24,10 +24,14 @@ export const PLUGINS = ClosedGroup(
       lua_add: "require('rc.kanagawa')",
     },
   ]),
-  // Loaded immediately after startup
+  // Very lazy but eventually loaded
   ...Group({ on_event: ["CursorHold"] }, [
     {
       repo: "vim-denops/denops.vim",
+    },
+    {
+      repo: "github/copilot.vim",
+      hook_add: await readTextFile("../copilot.vim"),
     },
   ]),
   // Loaded when reading any file
@@ -45,24 +49,20 @@ export const PLUGINS = ClosedGroup(
       lua_source: "require('rc.lsp')",
     },
   ]),
-  // Lsp
+  // nvim-lsp extensions
   ...Group({ on_source: ["nvim-lspconfig"] }, [
     {
       repo: "ray-x/lsp_signature.nvim",
     },
   ]),
-  // Loaded when cursor moved or hold for a while
-  ...Group({ on_event: ["CursorMoved", "CursorHold"] }, [
+  // Loaded when cursor moved (normal-mode plugins)
+  ...Group({ on_event: ["CursorMoved"] }, [
     {
       repo: "machakann/vim-sandwich",
     },
   ]),
-  // loaded when entreing insert mode
+  // Loaded when entreing insert mode
   ...Group({ on_event: ["CmdLineEnter", "InsertEnter"] }, [
-    {
-      repo: "github/copilot.vim",
-      hook_add: await readTextFile("../copilot.vim"),
-    },
     {
       repo: "Shougo/ddc.vim",
       depends: ["denops.vim", "pum.vim"],
