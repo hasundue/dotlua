@@ -1,4 +1,4 @@
-{ config, lib, pkgs, neovim-plugins, ... }:
+{ lib, pkgs, neovim-plugins, ... }:
 
 {
   programs.neovim = {
@@ -46,10 +46,12 @@
 
   programs.git.extraConfig.core.editor = "nvim";
 
-  home = let
+  home =
+  /* let
     nvim = lib.getExe config.programs.neovim.finalPackage;
-  in {
-    activation.neovimDppMakeState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+  in */
+  {
+    /* activation.neovimDppMakeState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       #!/bin/bash
       STATE_DIR=~/.cache/dpp/nvim
       if [ -d $STATE_DIR ]; then
@@ -59,7 +61,7 @@
 
       # TODO: Make this work
       # $DRY_RUN_CMD ${nvim} --headless -u ~/.local/share/nvim/make_state.vim
-    '';
+    ''; */
     packages = with pkgs; [
       lua-language-server
       nil
