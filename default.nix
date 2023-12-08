@@ -80,7 +80,7 @@
       ("nvim/plugins/" + name)
       { source = value; })
     (lib.filterAttrs
-      (name: value: name != "nixpkgs" && name != "_type" && name != "self")
+      (name: value: name != "nixpkgs" && name != "_type" && name != "self" )
       neovim-plugins) //
     {
       "nvim/make_state.vim".source = ./make_state.vim;

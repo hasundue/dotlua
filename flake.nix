@@ -8,16 +8,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    neovim-plugins.url = "./plugins";
+    /* PLUGINS START */
+    /* PLUGINS END */
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
     neovim-nightly,
-    neovim-plugins,
     ...
-  }:
+  } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
@@ -27,6 +27,14 @@
       }
     ) //
     {
-      inherit neovim-plugins;
+      plugins = with nixpkgs.lib; mapAttrs'
+        (name: value: nameValuePair
+          (removePrefix "plugin:" name)
+          value
+        )
+        (lib.filterAttrs
+          (name: value: hasPrefix "plugin:" name)
+          inputs
+        );
     };
 }
