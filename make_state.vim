@@ -9,7 +9,7 @@ const s:dpp_state = s:dpp_base .. '/nvim/state.vim'
 call s:add('dpp.vim')
 call s:add('dpp-ext-lazy')
 
-echo '[dpp] Creating ' .. s:dpp_state .. ' ...'
+call dpp#min#load_state(s:dpp_base)
 
 " Add denops and to runtimepath (required)
 call s:add('denops.vim')
@@ -21,6 +21,4 @@ autocmd User DenopsReady
   \ call dpp#make_state(s:dpp_base, stdpath('config') .. '/rc/dpp/config.ts')
 
 autocmd User Dpp:makeStatePost
-  \ echo '[dpp] Created ' .. s:dpp_state |
-  \ call denops#server#stop() |
-  \ qa
+  \ call denops#server#stop() | quit

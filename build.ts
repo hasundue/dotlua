@@ -1,4 +1,3 @@
-import { assertInstanceOf } from "https://deno.land/std@0.208.0/assert/assert_instance_of.ts";
 import { $HOME, type ClosedGroup } from "./rc/dpp/helper/mod.ts";
 
 async function updateFlake(
@@ -8,21 +7,14 @@ async function updateFlake(
     new URL("./flake.nix", import.meta.url),
   );
   const lines = original.split("\n");
-  const head = lines.slice(
+  const leadings = lines.slice(
     0,
-    lines.indexOf("    /* PLUGINS START */\n") + 1,
+    lines.findIndex((line) => line.includes("PLUGINS START")) + 1,
   );
-  const tail = lines.slice(
-    lines.indexOf("    /* PLUGINS END */"),
+  const followings = lines.slice(
+    lines.findLastIndex((line) => line.includes("PLUGINS END")),
   );
-  try {
-    await Deno.mkdir(new URL("./plugins", import.meta.url), {
-      recursive: true,
-    });
-  } catch (e) {
-    assertInstanceOf(e, Deno.errors.AlreadyExists);
-  }
-  const insertion = plugins.map((it) => {
+  const insertions = plugins.map((it) => {
     const { name, repo } = it;
     const url = repo.startsWith("~")
       ? `git+file:${repo.replace("~", $HOME)}`
@@ -30,8 +22,8 @@ async function updateFlake(
     return `    "plugin:${name}" = { url = "${url}"; flake = false; };`;
   });
   await Deno.writeTextFile(
-    new URL("./plugins/flake.nix", import.meta.url),
-    [head, insertion, tail].flat().join("\n"),
+    new URL("./flake.nix", import.meta.url),
+    [leadings, insertions, followings].flat().join("\n"),
   );
 }
 
