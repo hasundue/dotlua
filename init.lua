@@ -1,5 +1,5 @@
 -- enable experimental lua loader
--- vim.loader.enable()
+vim.loader.enable()
 
 -- base configuration, independent of plugins (keymaps, etc)
 require("rc.base")
