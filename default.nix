@@ -63,6 +63,7 @@
       # $DRY_RUN_CMD ${nvim} --headless -u ~/.local/share/nvim/make_state.vim
     ''; */
     packages = with pkgs; [
+      deno
       lua-language-server
       nil
       zls
