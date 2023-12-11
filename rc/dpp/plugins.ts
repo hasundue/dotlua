@@ -74,7 +74,7 @@ export const PLUGINS = ClosedGroup(
     { repo: "LumaKernel/ddc-file" },
     { repo: "Shougo/ddc-cmdline" },
     { repo: "Shougo/ddc-cmdline-history" },
-    { repo: "Shougo/ddc-source-lsp" },
+    { repo: "Shougo/ddc-source-lsp", depends: ["nvim-lspconfig"] },
     { repo: "Shougo/ddc-ui-pum", depends: ["pum.vim"] },
     { repo: "tani/ddc-fuzzy" },
   ]),
