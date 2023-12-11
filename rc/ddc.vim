@@ -24,14 +24,14 @@ call ddc#custom#patch_global('sourceOptions', #{
   \     sorters: ['sorter_fuzzy'],
   \     converters: ['converter_fuzzy'],
   \   },
-  \   nvim-lsp: #{
+  \   lsp: #{
   \     mark: 'L',
-  \     forceCompletionPattern: '\S[\.\[\(\{]\S*'
+  \     forceCompletionPattern: '\S[\.\[\(\{\/]\S*'
   \   },
   \ })
 
 call ddc#custom#patch_global('sourceParams', #{
-  \   nvim-lsp: #{
+  \   lsp: #{
   \     lspEngine: 'nvim-lsp',
   \   },
   \ })
