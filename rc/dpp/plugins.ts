@@ -65,7 +65,7 @@ export const PLUGINS = ClosedGroup(
   ...Group({ on_event: ["CmdLineEnter", "InsertEnter"] }, [
     {
       repo: "Shougo/ddc.vim",
-      depends: ["denops.vim", "pum.vim"],
+      depends: ["denops.vim"],
       hooks_file: `${rc}/ddc.vim`,
     },
   ]),
@@ -75,8 +75,7 @@ export const PLUGINS = ClosedGroup(
     { repo: "Shougo/ddc-cmdline" },
     { repo: "Shougo/ddc-cmdline-history" },
     { repo: "Shougo/ddc-source-lsp" },
-    { repo: "Shougo/ddc-ui-pum" },
-    { repo: "Shougo/pum.vim" },
+    { repo: "Shougo/ddc-ui-pum", depends: ["pum.vim"] },
     { repo: "tani/ddc-fuzzy" },
   ]),
   // ddu and ddu-commands
@@ -118,15 +117,19 @@ export const PLUGINS = ClosedGroup(
     lua_add: "require('rc.floaterm.keymap')",
     lua_source: "require('rc.floaterm.config')",
   },
-  // miscelaneous
-  {
-    repo: "lambdalisue/mr.vim",
-    on_source: ["ddu-source-mr"],
-  },
   // Markdown
   {
     repo: "iamcco/markdown-preview.nvim",
     on_cmd: ["MarkdownPreview"],
     build: 'sh -c "cd app && yarn install"',
+  },
+  // Miscelaneous
+  {
+    repo: "lambdalisue/mr.vim",
+    on_source: ["ddu-source-mr"],
+  },
+  {
+    repo: "Shougo/pum.vim",
+    on_source: ["ddc-ui-pum"],
   },
 ) satisfies Plugin[];
