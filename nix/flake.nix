@@ -56,17 +56,17 @@
         overlays = [ neovim-nightly.overlays.default ];
       }; in {
         # devShells.default = import ./nix/shell.nix { inherit pkgs; };
+        packages = {
+          plugins = with nixpkgs.lib; mapAttrs'
+            (name: input: nameValuePair
+              (removePrefix "plugin:" name)
+              (import ./pack_plugin.nix { inherit pkgs input; })
+            )
+            (filterAttrs
+              (name: value: hasPrefix "plugin:" name)
+              inputs
+            );
+        };
       }
-    ) //
-    {
-      plugins = with nixpkgs.lib; mapAttrs'
-        (name: value: nameValuePair
-          (removePrefix "plugin:" name)
-          value
-        )
-        (filterAttrs
-          (name: value: hasPrefix "plugin:" name)
-          inputs
-        );
-    };
+    );
 }
