@@ -1,4 +1,4 @@
-import { $HOME, type ClosedGroup } from "./rc/dpp/helper/mod.ts";
+import { $HOME, type ClosedGroup } from "../rc/dpp/helper/mod.ts";
 
 async function updateFlake(
   plugins: ClosedGroup,
@@ -28,6 +28,6 @@ async function updateFlake(
 }
 
 if (import.meta.main) {
-  const { PLUGINS } = await import("./rc/dpp/plugins.ts");
+  const { PLUGINS } = await import("../rc/dpp/plugins.ts");
   await updateFlake(PLUGINS);
 }

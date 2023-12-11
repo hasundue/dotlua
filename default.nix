@@ -87,6 +87,6 @@
       (name: value: name != "nixpkgs" && name != "_type" && name != "self" )
       neovim-plugins) //
     {
-      "nvim/make_state.vim".source = ./make_state.vim;
+      "nvim/make_state.vim".source = ./vim/make_state.vim;
     };
 }
