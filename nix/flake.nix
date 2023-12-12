@@ -9,38 +9,38 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     /* PLUGINS START */
-    "plugin:dpp.vim" = { url = "github:Shougo/dpp.vim"; flake = false; };
-    "plugin:dpp-ext-lazy" = { url = "github:Shougo/dpp-ext-lazy"; flake = false; };
-    "plugin:kanagawa.nvim" = { url = "github:rebelot/kanagawa.nvim"; flake = false; };
-    "plugin:denops.vim" = { url = "github:vim-denops/denops.vim"; flake = false; };
-    "plugin:gitsigns.nvim" = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-    "plugin:nvim-treesitter" = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
-    "plugin:nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
-    "plugin:lsp_signature.nvim" = { url = "github:ray-x/lsp_signature.nvim"; flake = false; };
-    "plugin:vim-sandwich" = { url = "github:machakann/vim-sandwich"; flake = false; };
-    "plugin:copilot.vim" = { url = "github:github/copilot.vim"; flake = false; };
-    "plugin:ddc.vim" = { url = "github:Shougo/ddc.vim"; flake = false; };
-    "plugin:ddc-file" = { url = "github:LumaKernel/ddc-file"; flake = false; };
-    "plugin:ddc-cmdline" = { url = "github:Shougo/ddc-cmdline"; flake = false; };
-    "plugin:ddc-cmdline-history" = { url = "github:Shougo/ddc-cmdline-history"; flake = false; };
-    "plugin:ddc-source-lsp" = { url = "github:Shougo/ddc-source-lsp"; flake = false; };
-    "plugin:ddc-ui-pum" = { url = "github:Shougo/ddc-ui-pum"; flake = false; };
-    "plugin:pum.vim" = { url = "github:Shougo/pum.vim"; flake = false; };
-    "plugin:ddc-fuzzy" = { url = "github:tani/ddc-fuzzy"; flake = false; };
-    "plugin:ddu.vim" = { url = "github:Shougo/ddu.vim"; flake = false; };
-    "plugin:ddu-commands.vim" = { url = "github:Shougo/ddu-commands.vim"; flake = false; };
-    "plugin:ddu-filter-zf" = { url = "github:hasundue/ddu-filter-zf"; flake = false; };
-    "plugin:ddu-source-mr" = { url = "github:kuuote/ddu-source-mr"; flake = false; };
-    "plugin:ddu-source-file_external" = { url = "github:matsui54/ddu-source-file_external"; flake = false; };
-    "plugin:ddu-source-help" = { url = "github:matsui54/ddu-source-help"; flake = false; };
-    "plugin:ddu-ui-ff" = { url = "github:Shougo/ddu-ui-ff"; flake = false; };
-    "plugin:ddu-kind-file" = { url = "github:Shougo/ddu-kind-file"; flake = false; };
-    "plugin:ddu-source-rg" = { url = "github:shun/ddu-source-rg"; flake = false; };
-    "plugin:ddu-source-buffer" = { url = "github:shun/ddu-source-buffer"; flake = false; };
-    "plugin:ddu-source-lsp" = { url = "github:uga-rosa/ddu-source-lsp"; flake = false; };
-    "plugin:vim-floaterm" = { url = "github:voldikss/vim-floaterm"; flake = false; };
-    "plugin:mr.vim" = { url = "github:lambdalisue/mr.vim"; flake = false; };
-    "plugin:markdown-preview.nvim" = { url = "github:iamcco/markdown-preview.nvim"; flake = false; };
+    "plugins/dpp.vim" = { url = "github:Shougo/dpp.vim"; flake = false; };
+    "plugins/dpp-ext-lazy" = { url = "github:Shougo/dpp-ext-lazy"; flake = false; };
+    "plugins/kanagawa.nvim" = { url = "github:rebelot/kanagawa.nvim"; flake = false; };
+    "plugins/denops.vim" = { url = "github:vim-denops/denops.vim"; flake = false; };
+    "plugins/copilot.vim" = { url = "github:github/copilot.vim"; flake = false; };
+    "plugins/gitsigns.nvim" = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
+    "plugins/nvim-treesitter" = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
+    "plugins/nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
+    "plugins/lsp_signature.nvim" = { url = "github:ray-x/lsp_signature.nvim"; flake = false; };
+    "plugins/vim-sandwich" = { url = "github:machakann/vim-sandwich"; flake = false; };
+    "plugins/ddc.vim" = { url = "github:Shougo/ddc.vim"; flake = false; };
+    "plugins/ddc-file" = { url = "github:LumaKernel/ddc-file"; flake = false; };
+    "plugins/ddc-cmdline" = { url = "github:Shougo/ddc-cmdline"; flake = false; };
+    "plugins/ddc-cmdline-history" = { url = "github:Shougo/ddc-cmdline-history"; flake = false; };
+    "plugins/ddc-source-lsp" = { url = "github:Shougo/ddc-source-lsp"; flake = false; };
+    "plugins/ddc-ui-pum" = { url = "github:Shougo/ddc-ui-pum"; flake = false; };
+    "plugins/ddc-fuzzy" = { url = "github:tani/ddc-fuzzy"; flake = false; };
+    "plugins/ddu.vim" = { url = "github:Shougo/ddu.vim"; flake = false; };
+    "plugins/ddu-commands.vim" = { url = "github:Shougo/ddu-commands.vim"; flake = false; };
+    "plugins/ddu-filter-zf" = { url = "github:hasundue/ddu-filter-zf"; flake = false; };
+    "plugins/ddu-source-mr" = { url = "github:kuuote/ddu-source-mr"; flake = false; };
+    "plugins/ddu-source-file_external" = { url = "github:matsui54/ddu-source-file_external"; flake = false; };
+    "plugins/ddu-source-help" = { url = "github:matsui54/ddu-source-help"; flake = false; };
+    "plugins/ddu-ui-ff" = { url = "github:Shougo/ddu-ui-ff"; flake = false; };
+    "plugins/ddu-kind-file" = { url = "github:Shougo/ddu-kind-file"; flake = false; };
+    "plugins/ddu-source-rg" = { url = "github:shun/ddu-source-rg"; flake = false; };
+    "plugins/ddu-source-buffer" = { url = "github:shun/ddu-source-buffer"; flake = false; };
+    "plugins/ddu-source-lsp" = { url = "github:uga-rosa/ddu-source-lsp"; flake = false; };
+    "plugins/vim-floaterm" = { url = "github:voldikss/vim-floaterm"; flake = false; };
+    "plugins/markdown-preview.nvim" = { url = "github:iamcco/markdown-preview.nvim"; flake = false; };
+    "plugins/mr.vim" = { url = "github:lambdalisue/mr.vim"; flake = false; };
+    "plugins/pum.vim" = { url = "github:Shougo/pum.vim"; flake = false; };
     /* PLUGINS END */
   };
 
@@ -60,8 +60,8 @@
       packages = with lib; mapAttrs
           (name: input: import ./pack_plugin.nix { inherit pkgs lib; } name input)
           (mapAttrs'
-            (name: input: nameValuePair (removePrefix "plugin:" name) input)
-            (filterAttrs (name: value: hasPrefix "plugin:" name) inputs)
+            (name: input: nameValuePair (removePrefix "plugins/" name) input)
+            (filterAttrs (name: value: hasPrefix "plugins/" name) inputs)
           );
     }
   );

@@ -19,7 +19,7 @@ async function updateFlake(
     const url = repo.startsWith("~")
       ? `git+file:${repo.replace("~", $HOME)}`
       : `github:${repo}`;
-    return `    "plugin:${name}" = { url = "${url}"; flake = false; };`;
+    return `    "plugins/${name}" = { url = "${url}"; flake = false; };`;
   });
   await Deno.writeTextFile(
     new URL("./flake.nix", import.meta.url),
