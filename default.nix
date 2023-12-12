@@ -83,6 +83,7 @@
   xdg.dataFile = lib.mapAttrs'
     (name: package: lib.nameValuePair
       ("nvim/plugins/" + name)
-      { source = package; })
+      { source = package; }
+    )
     neovim-plugins;
 }
