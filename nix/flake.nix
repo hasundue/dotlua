@@ -54,19 +54,15 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [ neovim-nightly.overlays.default ];
-      }; in {
-        # devShells.default = import ./nix/shell.nix { inherit pkgs; };
-        packages = {
-          plugins = with nixpkgs.lib; mapAttrs'
-            (name: input: nameValuePair
-              (removePrefix "plugin:" name)
-              (import ./pack_plugin.nix { inherit pkgs input; })
-            )
-            (filterAttrs
-              (name: value: hasPrefix "plugin:" name)
-              inputs
-            );
-        };
-      }
-    );
+      }; 
+      lib = pkgs.lib;
+    in {
+      packages = with lib; mapAttrs
+          (name: input: import ./pack_plugin.nix { inherit pkgs lib; } name input)
+          (mapAttrs'
+            (name: input: nameValuePair (removePrefix "plugin:" name) input)
+            (filterAttrs (name: value: hasPrefix "plugin:" name) inputs)
+          );
+    }
+  );
 }

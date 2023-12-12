@@ -81,13 +81,8 @@
   };
 
   xdg.dataFile = lib.mapAttrs'
-    (name: value: lib.nameValuePair
+    (name: package: lib.nameValuePair
       ("nvim/plugins/" + name)
-      { source = value; })
-    (lib.filterAttrs
-      (name: value: name != "nixpkgs" && name != "_type" && name != "self" )
-      neovim-plugins) //
-    {
-      "nvim/make_state.vim".source = ./vim/make_state.vim;
-    };
+      { source = package; })
+    neovim-plugins;
 }
