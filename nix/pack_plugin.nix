@@ -8,11 +8,7 @@ stdenv.mkDerivation {
   inherit name;
   src = input;
 
-  nativeBuildInputs = [ deno ];
-
-  configurePhase = ":";
-
-  buildPhase = ":";
+  phases = [ "installPhase" ];
 
   installPhase = ''
     mkdir -p $out
