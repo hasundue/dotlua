@@ -28,6 +28,7 @@ export const PLUGINS = ClosedGroup(
   ...Group({ on_event: ["CursorHold"] }, [
     {
       repo: "vim-denops/denops.vim",
+      hook_add: await readTextFile("../denops.vim"),
     },
     {
       repo: "github/copilot.vim",
