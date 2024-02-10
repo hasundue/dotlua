@@ -15,7 +15,7 @@ nnoremap <buffer><silent> -
   \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
 
 nnoremap <buffer><silent> <C-l>
-  \ <Cmd>call ddu#ui#do_action('refreshItems')<CR>
+  \ <Cmd>call ddu#ui#do_action('redraw')<CR>
 
 nnoremap <buffer><silent> =
   \ <Cmd>call ddu#ui#do_action('toggleAllItems')<CR>
