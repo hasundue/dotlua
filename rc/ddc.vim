@@ -14,8 +14,6 @@ call ddc#custom#patch_global(#{
   \   ui: 'pum',
   \ })
 
-call ddc#custom#patch_global('keywordPattern', '(\k*)|(:\w*)')
-
 call ddc#custom#patch_global('sourceOptions', #{
   \   _: #{
   \     maxItems: 10,
