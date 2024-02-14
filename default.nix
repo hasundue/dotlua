@@ -28,7 +28,7 @@
       rust
       scheme
       tsx
-      typescript
+      # typescript
       vim
       vimdoc
       yaml
