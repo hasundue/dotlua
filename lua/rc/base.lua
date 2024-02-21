@@ -2,24 +2,6 @@ local g = vim.g
 local opt = vim.opt
 
 --
--- clipboard -------------------------------------
---
-local osc52 = require('vim.ui.clipboard.osc52')
-
-g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = osc52.copy('+'),
-    ['*'] = osc52.copy('*'),
-  },
-  paste = {
-    ['+'] = osc52.paste('+'),
-    ['*'] = osc52.paste('*'),
-  },
-}
-opt.clipboard = "unnamedplus"
-
---
 -- UI -------------------------------------------
 --
 opt.number = true
