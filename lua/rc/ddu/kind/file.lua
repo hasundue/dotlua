@@ -1,0 +1,8 @@
+local ddu = require('lib.ddu')
+
+ddu.map('file', {
+  { '<C-s>', ddu.item_action('open', { command = 'split' }) },
+  { '<C-v>', ddu.item_action('open', { command = 'vsplit' }) },
+  { '<C-r>', ddu.item_action('rename') },
+  { '<C-d>', ddu.item_action('delete') },
+})

@@ -1,6 +1,3 @@
-"
-" hook_add {{{
-"
 nnoremap <silent> <leader>f <Cmd>Ddu file_external
   \ -name=file -ui=ff -resume<CR>
 
@@ -19,30 +16,3 @@ nnoremap <silent> <leader>r <Cmd>Ddu rg
 
 nnoremap <silent> <leader>d <Cmd>Ddu help
   \ -name=help -ui=ff -resume<CR>
-
-" }}}
-
-"
-" ddu-ff {{{
-"
-nnoremap <buffer><silent> <CR> 
-  \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
-
-nnoremap <buffer><silent> i
-  \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
-
-" }}}
-
-"
-" ddu-ff-filter {{{
-"
-inoremap <buffer><silent> <CR>
-  \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-
-nnoremap <buffer><silent> <CR>
-  \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-
-nnoremap <buffer><silent> <C-[>
-  \ <Cmd>call ddu#ui#do_action('quit')<CR>
-
-" }}}

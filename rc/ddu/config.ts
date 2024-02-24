@@ -28,10 +28,12 @@ export class Config extends BaseConfig {
             ["&number", 1],
             ["&ruler", 0],
           ],
+          prompt: "> ",
           startAutoAction: true,
+          startFilter: true,
           split: "floating",
           winHeight: 10,
-          winRow: "&lines / 2 - 12",
+          winRow: "&lines / 2 - 13",
           winWidth: "min([&columns, 80])",
         } satisfies Partial<FfParams | FilerParams>,
         ff: {

@@ -84,7 +84,7 @@ export const PLUGINS = ClosedGroup(
     repo: "Shougo/ddu.vim",
     depends: ["denops.vim"],
     on_source: ["ddu-commands.vim"],
-    hooks_file: `${rc}/ddu.vim`,
+    lua_source: "require('rc.ddu')",
   },
   {
     repo: "Shougo/ddu-commands.vim",
@@ -104,9 +104,13 @@ export const PLUGINS = ClosedGroup(
     { repo: "matsui54/ddu-source-help" },
     {
       repo: "Shougo/ddu-ui-ff",
-      hooks_file: `${rc}/ddu/ui-ff.vim`,
+      hook_add: await readTextFile(`../ddu/ui-ff.vim`),
+      lua_source: "require('rc.ddu.ui.ff')",
     },
-    { repo: "Shougo/ddu-kind-file" },
+    {
+      repo: "Shougo/ddu-kind-file",
+      lua_source: "require('rc.ddu.kind.file')",
+    },
     { repo: "shun/ddu-source-rg" },
     { repo: "shun/ddu-source-buffer" },
     { repo: "uga-rosa/ddu-source-lsp" },
