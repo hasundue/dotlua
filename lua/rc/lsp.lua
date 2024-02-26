@@ -68,40 +68,22 @@ local servers = {
     },
   },
   denols = {
-    cmd = { "deno", "lsp", "--unstable" },
-    single_file_support = true,
-    root_dir = lspconfig.util.root_pattern(
-      "denops",
-      "deno.json",
-      "deno.jsonc"
-    ),
+    cmd = { "deno", "lsp" },
+    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
     settings = {
       deno = {
         enable = true,
-        suggest = {
-          completeFunctionCalls = true,
-          names = true,
-          paths = true,
-          autoImports = true,
-          imports = {
-            autoDiscover = true,
-            hosts = {
-              ["https://deno.land"] = true,
-            },
-          },
-        },
-        inlayHints = {
-          enumMemberValues = { enabled = true },
-          functionLikeReturnTypes = { enabled = true },
-          parameterNames = { enabled = "literals" },
-          parameterTypes = { enabled = true },
-          propertyDeclarationTypes = { enabled = true },
-          variableTypes = { enabled = true },
-          enabled = "on",
-        },
         unstable = true,
       },
+      typescript = {
+        inlayHints = {
+          enabled = "on",
+          functionLikeReturnTypes = { enabled = true },
+          variableTypes = { enabled = true },
+        },
+      },
     },
+    single_file_support = true,
   },
   nil_ls = {
     cmd = { "nil" },
