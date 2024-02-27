@@ -82,7 +82,7 @@ local servers = {
         inlayHints = {
           enabled = "on",
           functionLikeReturnTypes = { enabled = true },
-          variableTypes = { enabled = true },
+          parameterTypes = { enabled = true },
         },
       },
     },
