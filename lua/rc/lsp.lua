@@ -7,11 +7,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set(mode, lhs, rhs, { noremap = true, buffer = ev.buf })
     end
 
-    map('n', '<M-k>', function() vim.diagnostic.open_float { float = { header = false } } end)
-    map('n', '<M-n>', function() vim.diagnostic.goto_next { float = { header = false } } end)
-    map('n', '<M-p>', function() vim.diagnostic.goto_prev { float = { header = false } } end)
+    map('n', '<M-k>', function() vim.diagnostic.open_float { float = { header = '' } } end)
+    map('n', '<M-n>', function() vim.diagnostic.goto_next { float = { header = '' } } end)
+    map('n', '<M-p>', function() vim.diagnostic.goto_prev { float = { header = '' } } end)
 
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    assert(client, "client not found")
 
     if client.supports_method("hover") then
       map('n', 'K', vim.lsp.buf.hover)
