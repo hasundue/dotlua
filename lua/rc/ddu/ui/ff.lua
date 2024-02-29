@@ -8,4 +8,6 @@ ddu.map(nil, {
   { '<C-p>', ddu.action('cursorPrevious') },
   -- Default itemAction
   { '<CR>',  ddu.item_action('default') },
+  -- Refresh items
+  { '<C-l>', ddu.action('redraw', { method = 'refreshItems' }) },
 })
