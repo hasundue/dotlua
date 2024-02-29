@@ -56,7 +56,7 @@ function M.patch_local(name, dict)
   vim.fn["ddu#custom#patch_local"](name, dict)
 end
 
----@param type "ui" |"source"|"filter"|"kind"|"column"|"action"
+---@param type "ui"|"source"|"filter"|"kind"|"column"|"action"
 ---@param alias_name string
 ---@param base_name string
 function M.alias(type, alias_name, base_name)
