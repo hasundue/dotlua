@@ -132,6 +132,7 @@ export const PLUGINS = ClosedGroup(
   {
     repo: "lambdalisue/mr.vim",
     on_source: ["ddu-source-mr"],
+    lua_source: "require('rc.ddu.kind.mr')",
   },
   {
     repo: "Shougo/pum.vim",
