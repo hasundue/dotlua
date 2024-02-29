@@ -1,7 +1,7 @@
-import { BaseConfig } from "https://deno.land/x/ddu_vim@v3.6.0/types.ts";
-import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.6.0/base/config.ts";
-import { Params as FfParams } from "https://deno.land/x/ddu_ui_ff@v1.1.0/ff.ts";
-import { Params as FilerParams } from "https://deno.land/x/ddu_ui_filer@v1.1.0/filer.ts";
+import { BaseConfig } from "ddu_vim/types.ts";
+import { ConfigArguments } from "ddu_vim/base/config.ts";
+import { Params as FfParams } from "ddu_ui_ff/ff.ts";
+import { Params as FilerParams } from "ddu_ui_filer/filer.ts";
 
 export class Config extends BaseConfig {
   config(args: ConfigArguments) {

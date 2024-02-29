@@ -1,15 +1,15 @@
-import { walk } from "./lib/std.ts";
+import { walk } from "std/fs/walk.ts";
+import { Denops } from "dpp_vim/deps.ts";
 import {
   BaseConfig,
   ConfigReturn,
   ContextBuilder,
-  Denops,
   Dpp,
   Plugin,
-} from "./lib/dpp_vim.ts";
-import { $XDG_CONFIG_HOME } from "./helper/lib/env.ts";
-import { PLUGINS } from "./plugins.ts";
+} from "dpp_vim/types.ts";
 import { buildPlugin } from "./build.ts";
+import { $XDG_CONFIG_HOME } from "./env.ts";
+import { PLUGINS } from "./plugins.ts";
 
 type LazyMakeStateResult = {
   plugins: Plugin[];
