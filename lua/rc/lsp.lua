@@ -59,15 +59,19 @@ local servers = {
   lua_ls = {
     settings = {
       Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
         hint = {
-          enable = true,
+          enable = false,
         },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            vim.env.VIMRUNTIME .. "/lua",
+            "${3rd}/luv/library",
+            "${3rd}/busted/library",
+            "${3rd}/luassert/library",
+            vim.fn.stdpath("config") .. "/lua",
+          },
+        },
       },
     },
   },
