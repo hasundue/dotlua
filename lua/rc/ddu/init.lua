@@ -1,4 +1,4 @@
-local ddu = require('rc.ddu.utils')
+local ddu = require('rc.ddu.util')
 
 ddu.map(nil, {
   -- Close UI
