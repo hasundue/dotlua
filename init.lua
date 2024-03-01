@@ -5,4 +5,4 @@ vim.loader.enable()
 require("rc.base")
 
 -- load plugins with dpp.vim
-vim.cmd("source " .. vim.fn.stdpath("config") .. "/rc/dpp/init.vim")
+require("rc.dpp")

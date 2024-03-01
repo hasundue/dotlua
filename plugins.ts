@@ -1,6 +1,6 @@
 import type { Plugin } from "dpp_vim/types.ts";
-import { $XDG_CONFIG_HOME } from "./env.ts";
-import { ClosedGroup, Group } from "./groups.ts";
+import { $XDG_CONFIG_HOME } from "./deno/env.ts";
+import { ClosedGroup, Group } from "./deno/groups.ts";
 
 const rc = $XDG_CONFIG_HOME + "/nvim/rc";
 
@@ -29,11 +29,11 @@ export const PLUGINS = ClosedGroup(
   ...Group({ on_event: ["CursorHold"] }, [
     {
       repo: "vim-denops/denops.vim",
-      hook_add: await readTextFile("../denops.vim"),
+      hook_source: await readTextFile("./rc/denops.vim"),
     },
     {
       repo: "github/copilot.vim",
-      hook_add: await readTextFile("../copilot.vim"),
+      hook_source: await readTextFile("./rc/copilot.vim"),
     },
   ]),
   // Loaded when reading any file
@@ -106,7 +106,7 @@ export const PLUGINS = ClosedGroup(
       repo: "matsui54/ddu-source-file_external",
       lua_source: "require('rc.ddu.source.file_external')",
     },
-    { 
+    {
       repo: "matsui54/ddu-source-help",
       lua_source: "require('rc.ddu.source.help')",
     },
@@ -114,11 +114,11 @@ export const PLUGINS = ClosedGroup(
       repo: "Shougo/ddu-kind-file",
       lua_source: "require('rc.ddu.kind.file')",
     },
-    { 
+    {
       repo: "shun/ddu-source-rg",
       lua_source: "require('rc.ddu.source.rg')",
     },
-    { 
+    {
       repo: "shun/ddu-source-buffer",
       lua_source: "require('rc.ddu.source.buffer')",
     },

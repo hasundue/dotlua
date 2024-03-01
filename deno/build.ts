@@ -5,7 +5,7 @@ import { CommandBuilder } from "dax/mod.ts";
 import { Plugin } from "dpp_vim/types.ts";
 import { $XDG_CACHE_HOME, $XDG_DATA_HOME } from "./env.ts";
 
-const $CACHE = $XDG_CACHE_HOME + "/dpp/repos/github.com";
+const $CACHE = $XDG_CACHE_HOME + "/nvim/dpp/main/repos/github.com";
 const $DATA = $XDG_DATA_HOME + "/nvim";
 
 /**
@@ -43,6 +43,6 @@ export async function buildPlugin(
 }
 
 if (import.meta.main) {
-  const { PLUGINS } = await import("./plugins.ts");
+  const { PLUGINS } = await import("../plugins.ts");
   await Promise.all(PLUGINS.map(buildPlugin));
 }

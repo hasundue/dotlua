@@ -1,5 +1,5 @@
-import { $HOME } from "../rc/dpp/env.ts";
-import { type ClosedGroup } from "../rc/dpp/groups.ts";
+import { $HOME } from "../deno/env.ts";
+import { type ClosedGroup } from "../deno/groups.ts";
 
 async function updateFlake(
   plugins: ClosedGroup,

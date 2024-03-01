@@ -9,7 +9,7 @@ import {
 } from "dpp_vim/types.ts";
 import { buildPlugin } from "./build.ts";
 import { $XDG_CONFIG_HOME } from "./env.ts";
-import { PLUGINS } from "./plugins.ts";
+import { PLUGINS } from "../plugins.ts";
 
 type LazyMakeStateResult = {
   plugins: Plugin[];
