@@ -7,3 +7,11 @@ ddu.map('file', {
   { '<M-d>', ddu.item_action('delete') },
   { '<M-n>', ddu.item_action('newFile') },
 })
+
+ddu.patch_global({
+  kindOptions = {
+    file = {
+      defaultAction = 'open',
+    }
+  },
+})

@@ -1,4 +1,5 @@
-import { $HOME, type ClosedGroup } from "../rc/dpp/helper/mod.ts";
+import { $HOME } from "../rc/dpp/env.ts";
+import { type ClosedGroup } from "../rc/dpp/groups.ts";
 
 async function updateFlake(
   plugins: ClosedGroup,

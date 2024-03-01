@@ -1,4 +1,5 @@
 {
+  "lock": false,
   "imports": {
     "dax/": "https://deno.land/x/dax@0.39.2/",
     "denops_std/": "https://deno.land/x/denops_std@v6.1.0/",
