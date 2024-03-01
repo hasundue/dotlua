@@ -1,15 +1,13 @@
-local ddu = require("lib.ddu")
+local ddu = require("rc.ddu.utils")
 
-ddu.patch_local("file:find", {
+ddu.patch_local("file", {
   sources = {
-    name = "file_external",
-    params = {
-      cmd = vim.split("git ls-files -co --exclude-standard", " "),
-    },
-    options = {
-      matchers = { "matcher_zf" },
-      sorters = { "sorter_zf" },
-      converters = { "converter_zf" },
+    {
+      name = "file_external",
+      options = ddu.source_options(),
+      params = {
+        cmd = vim.split("git ls-files -co --exclude-standard", " "),
+      },
     },
   },
 })

@@ -63,4 +63,13 @@ function M.alias(type, alias_name, base_name)
   vim.fn["ddu#custom#alias"](type, alias_name, base_name)
 end
 
+---@return table
+function M.source_options()
+  return {
+    matchers = { "matcher_zf" },
+    sorters = { "sorter_zf" },
+    converters = { "converter_zf" },
+  }
+end
+
 return M

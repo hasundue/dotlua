@@ -1,4 +1,4 @@
-local ddu = require('lib.ddu')
+local ddu = require('rc.ddu.utils')
 
 ddu.map('file', {
   { '<C-s>', ddu.item_action('open', { command = 'split' }) },
@@ -10,5 +10,14 @@ ddu.patch_global({
     mr = {
       defaultAction = 'open',
     }
+  },
+})
+
+ddu.patch_local('mr', {
+  sources = {
+    {
+      name = 'mr',
+      options = ddu.source_options(),
+    },
   },
 })

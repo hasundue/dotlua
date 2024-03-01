@@ -1,4 +1,4 @@
-local ddu = require('lib.ddu')
+local ddu = require('rc.ddu.utils')
 
 ddu.map('file', {
   { '<C-s>', ddu.item_action('open', { command = 'split' }) },

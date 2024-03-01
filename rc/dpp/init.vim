@@ -28,6 +28,9 @@ if dpp#min#load_state(s:dpp_base)
   " Need to load denops manually since we pass `--noplugin` to nvim
   runtime! plugin/denops.vim
 
+  " Make denops load our import maps
+  let g:denops#server#deno_args = ['-q', '--no-lock', '-A', '--import-map', stdpath('config') .. '/deno.json']
+
   autocmd dpp_init User DenopsReady
     \ call dpp#make_state(s:dpp_base, stdpath('config') .. '/rc/dpp/config.ts')
 

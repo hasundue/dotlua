@@ -78,6 +78,7 @@
     "nvim/init.lua".source = ./init.lua;
     "nvim/lua".source = ./lua;
     "nvim/rc".source = ./rc;
+    "nvim/deno.json".source = ./deno.json;
   };
 
   xdg.dataFile = lib.mapAttrs'

@@ -27,7 +27,6 @@
     "plugins/ddc-ui-pum" = { url = "github:Shougo/ddc-ui-pum"; flake = false; };
     "plugins/ddc-fuzzy" = { url = "github:tani/ddc-fuzzy"; flake = false; };
     "plugins/ddu.vim" = { url = "github:Shougo/ddu.vim"; flake = false; };
-    "plugins/ddu-commands.vim" = { url = "github:Shougo/ddu-commands.vim"; flake = false; };
     "plugins/ddu-filter-zf" = { url = "github:hasundue/ddu-filter-zf"; flake = false; };
     "plugins/ddu-source-mr" = { url = "github:kuuote/ddu-source-mr"; flake = false; };
     "plugins/ddu-source-file_external" = { url = "github:matsui54/ddu-source-file_external"; flake = false; };

@@ -84,15 +84,15 @@ export const PLUGINS = ClosedGroup(
   {
     repo: "Shougo/ddu.vim",
     depends: ["denops.vim"],
-    on_source: ["ddu-commands.vim"],
-    lua_source: "require('rc.ddu')",
-  },
-  {
-    repo: "Shougo/ddu-commands.vim",
     on_cmd: ["Ddu"],
+    lua_add: "require('rc.ddu.keymap')",
+    lua_source: "require('rc.ddu')",
   },
   // ddu extensions
   ...Group({ on_source: ["ddu.vim"] }, [
+    {
+      repo: "Shougo/ddu-ui-ff",
+    },
     {
       repo: "hasundue/ddu-filter-zf",
       build: "deno task build",
@@ -100,20 +100,28 @@ export const PLUGINS = ClosedGroup(
     {
       repo: "kuuote/ddu-source-mr",
       depends: ["mr.vim"],
+      lua_source: "require('rc.ddu.source.mr')",
     },
-    { repo: "matsui54/ddu-source-file_external" },
-    { repo: "matsui54/ddu-source-help" },
     {
-      repo: "Shougo/ddu-ui-ff",
-      hook_add: await readTextFile(`../ddu/ui-ff.vim`),
-      lua_source: "require('rc.ddu.ui.ff')",
+      repo: "matsui54/ddu-source-file_external",
+      lua_source: "require('rc.ddu.source.file_external')",
+    },
+    { 
+      repo: "matsui54/ddu-source-help",
+      lua_source: "require('rc.ddu.source.help')",
     },
     {
       repo: "Shougo/ddu-kind-file",
       lua_source: "require('rc.ddu.kind.file')",
     },
-    { repo: "shun/ddu-source-rg" },
-    { repo: "shun/ddu-source-buffer" },
+    { 
+      repo: "shun/ddu-source-rg",
+      lua_source: "require('rc.ddu.source.rg')",
+    },
+    { 
+      repo: "shun/ddu-source-buffer",
+      lua_source: "require('rc.ddu.source.buffer')",
+    },
     { repo: "uga-rosa/ddu-source-lsp" },
   ]),
   // floaterm
@@ -133,7 +141,6 @@ export const PLUGINS = ClosedGroup(
   {
     repo: "lambdalisue/mr.vim",
     on_source: ["ddu-source-mr"],
-    lua_source: "require('rc.ddu.kind.mr')",
   },
   {
     repo: "Shougo/pum.vim",
