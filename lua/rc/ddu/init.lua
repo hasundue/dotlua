@@ -28,7 +28,7 @@ ddu.patch_global({
       previewFloatingBorder = 'single',
       previewWindowOptions = {
         { '&cursorline', 0 },
-        { '&number',     1 },
+        { '&number',     0 },
         { '&ruler',      0 },
       },
       prompt = '> ',
