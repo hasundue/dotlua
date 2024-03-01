@@ -1,4 +1,4 @@
-import { basename } from "std/path/basename.ts";
+import { basename } from "@std/path";
 import type { AutocmdEvent } from "denops_std/autocmd/mod.ts";
 import type { Plugin } from "dpp_vim/types.ts";
 

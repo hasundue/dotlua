@@ -1,8 +1,8 @@
+import { assertInstanceOf } from "@std/assert";
+import { copy } from "@std/fs";
+import { join } from "@std/path";
 import { CommandBuilder } from "dax/mod.ts";
 import { Plugin } from "dpp_vim/types.ts";
-import { assertInstanceOf } from "std/assert/assert_instance_of.ts";
-import { copy } from "std/fs/copy.ts";
-import { join } from "std/path/join.ts";
 import { $XDG_CACHE_HOME, $XDG_DATA_HOME } from "./env.ts";
 
 const $CACHE = $XDG_CACHE_HOME + "/dpp/repos/github.com";

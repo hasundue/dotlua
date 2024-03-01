@@ -1,4 +1,4 @@
-import { walk } from "std/fs/walk.ts";
+import { walk } from "@std/fs";
 import { Denops } from "dpp_vim/deps.ts";
 import {
   BaseConfig,

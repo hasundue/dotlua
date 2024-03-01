@@ -1,4 +1,4 @@
-import { assertEquals, assertObjectMatch } from "std/assert/mod.ts";
+import { assertEquals, assertObjectMatch } from "@std/assert";
 import { ClosedGroup, Group, Init } from "./groups.ts";
 
 const assert = (actual: Init[], expected: Init[]) => {
