@@ -1,11 +1,5 @@
 import type { Plugin } from "dpp_vim/types.ts";
-import { $XDG_CONFIG_HOME } from "./deno/env.ts";
 import { ClosedGroup, Group } from "./deno/groups.ts";
-
-const rc = $XDG_CONFIG_HOME + "/nvim/rc";
-
-const readTextFile = (path: string) =>
-  Deno.readTextFile(new URL(path, import.meta.url));
 
 export const PLUGINS = ClosedGroup(
   // Bootstrap
@@ -29,11 +23,11 @@ export const PLUGINS = ClosedGroup(
   ...Group({ on_event: ["CursorHold"] }, [
     {
       repo: "vim-denops/denops.vim",
-      hook_source: await readTextFile("./rc/denops.vim"),
+      lua_source: "require('rc.denops')",
     },
     {
       repo: "github/copilot.vim",
-      hook_source: await readTextFile("./rc/copilot.vim"),
+      lua_source: "require('rc.copilot')",
     },
   ]),
   // Loaded when reading any file
@@ -68,7 +62,7 @@ export const PLUGINS = ClosedGroup(
     {
       repo: "Shougo/ddc.vim",
       depends: ["denops.vim"],
-      hooks_file: `${rc}/ddc.vim`,
+      lua_source: "require('rc.ddc')",
     },
   ]),
   // ddc dependencies and extensions
@@ -76,7 +70,11 @@ export const PLUGINS = ClosedGroup(
     { repo: "LumaKernel/ddc-file" },
     { repo: "Shougo/ddc-cmdline" },
     { repo: "Shougo/ddc-cmdline-history" },
-    { repo: "Shougo/ddc-source-lsp", depends: ["nvim-lspconfig"] },
+    { 
+      repo: "Shougo/ddc-source-lsp",
+      depends: ["nvim-lspconfig"],
+      lua_source: "require('rc.ddc.source.lsp')",
+    },
     { repo: "Shougo/ddc-ui-pum", depends: ["pum.vim"] },
     { repo: "tani/ddc-fuzzy" },
   ]),
@@ -90,9 +88,7 @@ export const PLUGINS = ClosedGroup(
   },
   // ddu extensions
   ...Group({ on_source: ["ddu.vim"] }, [
-    {
-      repo: "Shougo/ddu-ui-ff",
-    },
+    { repo: "Shougo/ddu-ui-ff" },
     {
       repo: "hasundue/ddu-filter-zf",
       build: "deno task build",

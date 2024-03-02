@@ -4,8 +4,8 @@ ddu.map(nil, {
   -- Close UI
   { '<C-[>', ddu.action('quit') },
   -- Move cursor
-  { '<C-n>', ddu.action('cursorNext') },
-  { '<C-p>', ddu.action('cursorPrevious') },
+  { '<C-n>', ddu.action('cursorNext', { loop = true } ) },
+  { '<C-p>', ddu.action('cursorPrevious', { loop = true } ) },
   -- Default itemAction
   { '<CR>',  ddu.item_action('default') },
   -- Refresh items
@@ -61,6 +61,8 @@ local function resize()
       },
     },
   })
+
+  vim.call("ddu#ui#do_action", "redraw", { method = "uiRedraw" })
 end
 
 resize()
