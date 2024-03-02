@@ -19,19 +19,17 @@
     "plugins/nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     "plugins/lsp_signature.nvim" = { url = "github:ray-x/lsp_signature.nvim"; flake = false; };
     "plugins/vim-sandwich" = { url = "github:machakann/vim-sandwich"; flake = false; };
-    "plugins/ddc.vim" = { url = "github:Shougo/ddc.vim"; flake = false; };
-    "plugins/ddc-file" = { url = "github:LumaKernel/ddc-file"; flake = false; };
-    "plugins/ddc-cmdline" = { url = "github:Shougo/ddc-cmdline"; flake = false; };
-    "plugins/ddc-cmdline-history" = { url = "github:Shougo/ddc-cmdline-history"; flake = false; };
-    "plugins/ddc-source-lsp" = { url = "github:Shougo/ddc-source-lsp"; flake = false; };
-    "plugins/ddc-ui-pum" = { url = "github:Shougo/ddc-ui-pum"; flake = false; };
-    "plugins/ddc-fuzzy" = { url = "github:tani/ddc-fuzzy"; flake = false; };
+    "plugins/nvim-cmp" = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
+    "plugins/cmp-buffer" = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
+    "plugins/cmp-cmdline" = { url = "github:hrsh7th/cmp-cmdline"; flake = false; };
+    "plugins/cmp-nvim-lsp" = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
+    "plugins/cmp-path" = { url = "github:hrsh7th/cmp-path"; flake = false; };
     "plugins/ddu.vim" = { url = "github:Shougo/ddu.vim"; flake = false; };
+    "plugins/ddu-ui-ff" = { url = "github:Shougo/ddu-ui-ff"; flake = false; };
     "plugins/ddu-filter-zf" = { url = "github:hasundue/ddu-filter-zf"; flake = false; };
     "plugins/ddu-source-mr" = { url = "github:kuuote/ddu-source-mr"; flake = false; };
     "plugins/ddu-source-file_external" = { url = "github:matsui54/ddu-source-file_external"; flake = false; };
     "plugins/ddu-source-help" = { url = "github:matsui54/ddu-source-help"; flake = false; };
-    "plugins/ddu-ui-ff" = { url = "github:Shougo/ddu-ui-ff"; flake = false; };
     "plugins/ddu-kind-file" = { url = "github:Shougo/ddu-kind-file"; flake = false; };
     "plugins/ddu-source-rg" = { url = "github:shun/ddu-source-rg"; flake = false; };
     "plugins/ddu-source-buffer" = { url = "github:shun/ddu-source-buffer"; flake = false; };
@@ -39,7 +37,6 @@
     "plugins/vim-floaterm" = { url = "github:voldikss/vim-floaterm"; flake = false; };
     "plugins/markdown-preview.nvim" = { url = "github:iamcco/markdown-preview.nvim"; flake = false; };
     "plugins/mr.vim" = { url = "github:lambdalisue/mr.vim"; flake = false; };
-    "plugins/pum.vim" = { url = "github:Shougo/pum.vim"; flake = false; };
     /* PLUGINS END */
   };
 

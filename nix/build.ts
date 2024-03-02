@@ -29,6 +29,6 @@ async function updateFlake(
 }
 
 if (import.meta.main) {
-  const { PLUGINS } = await import("../rc/dpp/plugins.ts");
+  const { PLUGINS } = await import("../plugins.ts");
   await updateFlake(PLUGINS);
 }

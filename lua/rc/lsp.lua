@@ -7,9 +7,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set(mode, lhs, rhs, { noremap = true, buffer = ev.buf })
     end
 
-    map('n', '<M-k>', function() vim.diagnostic.open_float { float = { header = '' } } end)
-    map('n', '<M-n>', function() vim.diagnostic.goto_next { float = { header = '' } } end)
-    map('n', '<M-p>', function() vim.diagnostic.goto_prev { float = { header = '' } } end)
+    map('n', '<M-k>', vim.diagnostic.open_float)
+    map('n', '<M-n>', vim.diagnostic.goto_next)
+    map('n', '<M-p>', vim.diagnostic.goto_prev)
 
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     assert(client, "client not found")
@@ -98,6 +98,10 @@ local servers = {
   },
 }
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 for server, config in pairs(servers) do
-  lspconfig[server].setup(config)
+  lspconfig[server].setup(vim.tbl_deep_extend("force", config, {
+    capabilities = capabilities,
+  }))
 end

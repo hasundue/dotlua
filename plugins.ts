@@ -43,6 +43,7 @@ export const PLUGINS = ClosedGroup(
     {
       repo: "neovim/nvim-lspconfig",
       lua_source: "require('rc.lsp')",
+      depends: ["cmp-nvim-lsp"],
     },
   ]),
   // nvim-lsp extensions
@@ -57,28 +58,20 @@ export const PLUGINS = ClosedGroup(
       repo: "machakann/vim-sandwich",
     },
   ]),
-  // Loaded when entreing insert mode
-  ...Group({ on_event: ["CmdLineEnter", "InsertEnter"] }, [
+  // nvim-cmp and extensions
+  ...Group({ on_event: ["CmdlineEnter", "InsertEnter"] }, [
     {
-      repo: "Shougo/ddc.vim",
-      depends: ["denops.vim"],
-      lua_source: "require('rc.ddc')",
+      repo: "hrsh7th/nvim-cmp",
+      lua_source: "require('rc.cmp')",
     },
   ]),
-  // ddc dependencies and extensions
-  ...Group({ on_source: ["ddc.vim"] }, [
-    { repo: "LumaKernel/ddc-file" },
-    { repo: "Shougo/ddc-cmdline" },
-    { repo: "Shougo/ddc-cmdline-history" },
-    { 
-      repo: "Shougo/ddc-source-lsp",
-      depends: ["nvim-lspconfig"],
-      lua_source: "require('rc.ddc.source.lsp')",
-    },
-    { repo: "Shougo/ddc-ui-pum", depends: ["pum.vim"] },
-    { repo: "tani/ddc-fuzzy" },
+  ...Group({ on_source: ["nvim-cmp"] }, [
+    { repo: "hrsh7th/cmp-buffer" },
+    { repo: "hrsh7th/cmp-cmdline" },
+    { repo: "hrsh7th/cmp-nvim-lsp" },
+    { repo: "hrsh7th/cmp-path" },
   ]),
-  // ddu and ddu-commands
+  // ddu.vim and extensions
   {
     repo: "Shougo/ddu.vim",
     depends: ["denops.vim"],
@@ -86,7 +79,6 @@ export const PLUGINS = ClosedGroup(
     lua_add: "require('rc.ddu.keymap')",
     lua_source: "require('rc.ddu')",
   },
-  // ddu extensions
   ...Group({ on_source: ["ddu.vim"] }, [
     { repo: "Shougo/ddu-ui-ff" },
     {
@@ -137,9 +129,5 @@ export const PLUGINS = ClosedGroup(
   {
     repo: "lambdalisue/mr.vim",
     on_source: ["ddu-source-mr"],
-  },
-  {
-    repo: "Shougo/pum.vim",
-    on_source: ["ddc-ui-pum"],
   },
 ) satisfies Plugin[];
