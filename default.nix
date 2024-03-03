@@ -75,12 +75,7 @@
   };
 
   xdg.configFile = {
-    "nvim/deno".source = ./deno;
-    "nvim/lua".source = ./lua;
-    "nvim/rc".source = ./rc;
-    "nvim/deno.json".source = ./deno.json;
-    "nvim/init.lua".source = ./init.lua;
-    "nvim/plugins.ts".source = ./plugins.ts;
+    "nvim".source = ./.;
   };
 
   xdg.dataFile = lib.mapAttrs'

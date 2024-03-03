@@ -39,12 +39,7 @@ export class Config extends BaseConfig {
       { plugins },
     ) as LazyMakeStateResult;
 
-    // Create a list of files to check
-    const checkFiles = await Array.fromAsync(walk($CONFIG + "/rc"))
-      .then((entries) => entries.map((entry) => entry.path));
-
     return {
-      checkFiles,
       plugins: makeStateResult.plugins,
       stateLines: makeStateResult.stateLines,
     } satisfies ConfigReturn;
