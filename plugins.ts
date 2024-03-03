@@ -4,13 +4,8 @@ import { ClosedGroup, Group } from "./deno/groups.ts";
 export const PLUGINS = ClosedGroup(
   // Bootstrap
   ...Group({ lazy: false, rtp: "" }, [
-    {
-      repo: "Shougo/dpp.vim",
-    },
-    {
-      repo: "Shougo/dpp-ext-lazy",
-      depends: ["dpp.vim"],
-    },
+    { repo: "Shougo/dpp.vim" },
+    { repo: "Shougo/dpp-ext-lazy", depends: ["dpp.vim"] },
   ]),
   // Merged into bootstrap
   ...Group({ lazy: false }, [
@@ -26,7 +21,7 @@ export const PLUGINS = ClosedGroup(
       lua_source: "require('rc.denops')",
     },
     {
-      repo: "github/copilot.vim",
+      repo: "zbirenbaum/copilot.lua",
       lua_source: "require('rc.copilot')",
     },
   ]),
@@ -48,15 +43,11 @@ export const PLUGINS = ClosedGroup(
   ]),
   // nvim-lsp extensions
   ...Group({ on_source: ["nvim-lspconfig"] }, [
-    {
-      repo: "ray-x/lsp_signature.nvim",
-    },
+    { repo: "ray-x/lsp_signature.nvim" },
   ]),
   // Loaded when cursor moved (normal-mode plugins)
   ...Group({ on_event: ["CursorMoved"] }, [
-    {
-      repo: "machakann/vim-sandwich",
-    },
+    { repo: "machakann/vim-sandwich" },
   ]),
   // nvim-cmp and extensions
   ...Group({ on_event: ["CmdlineEnter", "InsertEnter"] }, [

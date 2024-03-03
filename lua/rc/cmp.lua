@@ -8,21 +8,31 @@ local function in_text()
   return string.match(line:sub(1, col), "^[%s\\]*$") == nil
 end
 
+---@return boolean
+local function copilot_visible()
+  local status, copilot = pcall(require, "copilot.suggestion")
+  if status then
+    return copilot.is_visible()
+  else
+    return false
+  end
+end
+
 cmp.setup({
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif in_text() then
+      elseif in_text() and not copilot_visible() then
         cmp.complete()
       else
         fallback()
       end
     end),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },

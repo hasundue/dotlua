@@ -13,7 +13,7 @@
     "plugins/dpp-ext-lazy" = { url = "github:Shougo/dpp-ext-lazy"; flake = false; };
     "plugins/kanagawa.nvim" = { url = "github:rebelot/kanagawa.nvim"; flake = false; };
     "plugins/denops.vim" = { url = "github:vim-denops/denops.vim"; flake = false; };
-    "plugins/copilot.vim" = { url = "github:github/copilot.vim"; flake = false; };
+    "plugins/copilot.lua" = { url = "github:zbirenbaum/copilot.lua"; flake = false; };
     "plugins/gitsigns.nvim" = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
     "plugins/nvim-treesitter" = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     "plugins/nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
