@@ -21,9 +21,11 @@ end
 cmp.setup({
   mapping = {
     ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
+      if copilot_visible() then
+        fallback()
+      elseif cmp.visible() then
         cmp.select_next_item()
-      elseif in_text() and not copilot_visible() then
+      elseif in_text() then
         cmp.complete()
       else
         fallback()
