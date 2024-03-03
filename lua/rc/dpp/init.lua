@@ -5,7 +5,7 @@ local dpp_name = "main"
 
 local dpp_base = vim.fn.stdpath("cache") .. "/dpp"
 local dpp_state = dpp_base .. "/" .. dpp_name .. "/state.vim"
-local dpp_config = vim.fn.stdpath("config") .. "/deno/dpp.ts"
+local dpp_config = vim.fn.stdpath("config") .. "/denops/dpp/config.ts"
 
 util.depends("dpp.vim")
 util.depends("dpp-ext-lazy")
@@ -38,6 +38,3 @@ if dpp.load_state(dpp_base, dpp_name) > 0 then
     dpp.load_state(dpp_base, dpp_name)
   end)
 end
-
-vim.cmd("filetype indent plugin on")
-vim.cmd("syntax on")

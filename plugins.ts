@@ -1,124 +1,76 @@
-import type { Plugin } from "dpp_vim/types.ts";
-import { ClosedGroup, Group } from "./deno/groups.ts";
+import { ClosedGroup, Group } from "./lib/specs.ts";
 
-export const PLUGINS = ClosedGroup(
-  // Bootstrap
+export default ClosedGroup(
+  // dpp.vim and extensions (a plugin manager)
   ...Group({ lazy: false, rtp: "" }, [
-    { repo: "Shougo/dpp.vim" },
-    { repo: "Shougo/dpp-ext-lazy", depends: ["dpp.vim"] },
+    "Shougo/dpp.vim",
+    "Shougo/dpp-ext-lazy",
   ]),
-  // Merged into bootstrap
+  // Colorscheme
   ...Group({ lazy: false }, [
-    {
-      repo: "rebelot/kanagawa.nvim",
-      lua_add: "require('rc.kanagawa')",
-    },
+    "rebelot/kanagawa.nvim",
   ]),
-  // Very lazy but eventually loaded
-  ...Group({ on_event: ["CursorHold"] }, [
-    {
-      repo: "vim-denops/denops.vim",
-      lua_source: "require('rc.denops')",
-    },
-    {
-      repo: "zbirenbaum/copilot.lua",
-      lua_source: "require('rc.copilot')",
-    },
+  // UI
+  ...Group({ event: "BufRead" }, [
+    { repo: "neovim/nvim-lspconfig", depends: "cmp-nvim-lsp" },
+    "nvim-treesitter/nvim-treesitter",
+    { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
   ]),
-  // Loaded when reading any file
-  ...Group({ on_event: ["BufRead"] }, [
-    {
-      repo: "lewis6991/gitsigns.nvim",
-      lua_source: "require('gitsigns').setup()",
-    },
-    {
-      repo: "nvim-treesitter/nvim-treesitter",
-      lua_source: "require('rc.treesitter')",
-    },
-    {
-      repo: "neovim/nvim-lspconfig",
-      lua_source: "require('rc.lsp')",
-      depends: ["cmp-nvim-lsp"],
-    },
-  ]),
-  // nvim-lsp extensions
-  ...Group({ on_source: ["nvim-lspconfig"] }, [
-    { repo: "ray-x/lsp_signature.nvim" },
+  // LSP
+  ...Group({ extends: "nvim-lspconfig" }, [
+    "ray-x/lsp_signature.nvim",
   ]),
   // Loaded when cursor moved (normal-mode plugins)
-  ...Group({ on_event: ["CursorMoved"] }, [
-    { repo: "machakann/vim-sandwich" },
+  ...Group({ event: "CursorMoved" }, [
+    "machakann/vim-sandwich",
   ]),
-  // nvim-cmp and extensions
-  ...Group({ on_event: ["CmdlineEnter", "InsertEnter"] }, [
-    {
-      repo: "hrsh7th/nvim-cmp",
-      lua_source: "require('rc.cmp')",
-    },
+  // Loaded when starting insert mode
+  ...Group({ event: ["CmdlineEnter", "InsertEnter"] }, [
+    "hrsh7th/nvim-cmp",
+    "zbirenbaum/copilot.lua",
   ]),
-  ...Group({ on_source: ["nvim-cmp"] }, [
-    { repo: "hrsh7th/cmp-buffer" },
-    { repo: "hrsh7th/cmp-cmdline" },
-    { repo: "hrsh7th/cmp-nvim-lsp" },
-    { repo: "hrsh7th/cmp-path" },
+  // nvim-cmp extensions
+  ...Group({ extends: "nvim-cmp" }, [
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
   ]),
-  // ddu.vim and extensions
-  {
-    repo: "Shougo/ddu.vim",
-    depends: ["denops.vim"],
-    on_cmd: ["Ddu"],
-    lua_add: "require('rc.ddu.keymap')",
-    lua_source: "require('rc.ddu')",
-  },
-  ...Group({ on_source: ["ddu.vim"] }, [
-    { repo: "Shougo/ddu-ui-ff" },
-    {
-      repo: "hasundue/ddu-filter-zf",
-      build: "deno task build",
-    },
-    {
-      repo: "kuuote/ddu-source-mr",
-      depends: ["mr.vim"],
-      lua_source: "require('rc.ddu.source.mr')",
-    },
-    {
-      repo: "matsui54/ddu-source-file_external",
-      lua_source: "require('rc.ddu.source.file_external')",
-    },
-    {
-      repo: "matsui54/ddu-source-help",
-      lua_source: "require('rc.ddu.source.help')",
-    },
-    {
-      repo: "Shougo/ddu-kind-file",
-      lua_source: "require('rc.ddu.kind.file')",
-    },
-    {
-      repo: "shun/ddu-source-rg",
-      lua_source: "require('rc.ddu.source.rg')",
-    },
-    {
-      repo: "shun/ddu-source-buffer",
-      lua_source: "require('rc.ddu.source.buffer')",
-    },
-    { repo: "uga-rosa/ddu-source-lsp" },
+  // denops.vim and related plugins
+  ...Group({ depends: "denops.vim" }, [
+    { repo: "Shougo/ddu.vim", cmd: "Ddu" },
   ]),
-  // floaterm
+  // ddu extensions
+  ...Group({ extends: "ddu.vim" }, [
+    "Shougo/ddu-ui-ff",
+    { repo: "hasundue/ddu-filter-zf", build: "deno task build" },
+  ]),
+  // ddu sources
+  ...Group({ extends: "ddu.vim", prefix: "ddu-source-" }, [
+    { repo: "kuuote/ddu-source-mr", depends: "mr.vim" },
+    "matsui54/ddu-source-file_external",
+    "matsui54/ddu-source-help",
+    "shun/ddu-source-buffer",
+    "shun/ddu-source-rg",
+    "uga-rosa/ddu-source-lsp",
+  ]),
+  // ddu kinds
+  ...Group({ extends: "ddu.vim", prefix: "ddu-kind-" }, [
+    "Shougo/ddu-kind-file",
+  ]),
+  // Terminal
   {
     repo: "voldikss/vim-floaterm",
-    on_cmd: ["FloatermNew", "FloatermToggle"],
-    lua_add: "require('rc.floaterm.keymap')",
-    lua_source: "require('rc.floaterm.config')",
+    cmd: ["FloatermNew", "FloatermToggle"],
   },
-  // Markdown
-  {
+  { // Markdown
     repo: "iamcco/markdown-preview.nvim",
-    on_cmd: ["MarkdownPreview"],
+    cmd: "MarkdownPreview",
     build: 'sh -c "cd app && yarn install"',
   },
-  // Miscelaneous
-  {
-    repo: "lambdalisue/mr.vim",
-    on_source: ["ddu-source-mr"],
-  },
-) satisfies Plugin[];
+  // Dependencies
+  ...Group({ lazy: true }, [
+    "lambdalisue/mr.vim",
+    "vim-denops/denops.vim",
+  ]),
+);

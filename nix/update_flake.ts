@@ -1,5 +1,5 @@
-import { $HOME } from "../deno/env.ts";
-import { type ClosedGroup } from "../deno/groups.ts";
+import { $HOME } from "../lib/env.ts";
+import { type ClosedGroup, toName } from "../lib/specs.ts";
 
 async function updateFlake(
   plugins: ClosedGroup,
@@ -15,8 +15,10 @@ async function updateFlake(
   const followings = lines.slice(
     lines.findLastIndex((line) => line.includes("PLUGINS END")),
   );
-  const insertions = plugins.map((it) => {
-    const { name, repo } = it;
+  const insertions = plugins.map((spec) => {
+    spec = typeof spec === "string" ? { repo: spec } : spec;
+    const { repo } = spec;
+    const name = toName(repo);
     const url = repo.startsWith("~")
       ? `git+file:${repo.replace("~", $HOME)}`
       : `github:${repo}`;
@@ -29,6 +31,6 @@ async function updateFlake(
 }
 
 if (import.meta.main) {
-  const { PLUGINS } = await import("../plugins.ts");
-  await updateFlake(PLUGINS);
+  const { default: specs } = await import("../plugins.ts");
+  await updateFlake(specs);
 }

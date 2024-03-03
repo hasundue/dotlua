@@ -1,4 +1,3 @@
-import { walk } from "@std/fs";
 import { Denops } from "dpp_vim/deps.ts";
 import {
   BaseConfig,
@@ -7,16 +6,13 @@ import {
   Dpp,
   Plugin,
 } from "dpp_vim/types.ts";
-import { buildPlugin } from "./build.ts";
-import { $XDG_CONFIG_HOME } from "./env.ts";
-import { PLUGINS } from "../plugins.ts";
+import { initPlugin } from "../../lib/init_plugin.ts";
+import specs from "../../plugins.ts";
 
 type LazyMakeStateResult = {
   plugins: Plugin[];
   stateLines: string[];
 };
-
-const $CONFIG = $XDG_CONFIG_HOME + "/nvim";
 
 export class Config extends BaseConfig {
   override async config(args: {
@@ -27,7 +23,7 @@ export class Config extends BaseConfig {
   }) {
     const [context, options] = await args.contextBuilder.get(args.denops);
 
-    const plugins = await Promise.all(PLUGINS.map(buildPlugin));
+    const plugins = await Promise.all(specs.map(initPlugin));
 
     // Create a state with dpp-ext-lazy
     const makeStateResult = await args.dpp.extAction(
