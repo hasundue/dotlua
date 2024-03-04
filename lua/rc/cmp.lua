@@ -2,10 +2,10 @@ local cmp = require("cmp")
 
 -- True if we are in the beginning of the line, ignoring whitespaces and tabs.
 ---@return boolean
-local function in_text()
+local function has_text_before()
   local line = vim.fn.getline(".")
   local col = vim.fn.col(".")
-  return string.match(line:sub(1, col), "^[%s\\]*$") == nil
+  return string.match(line:sub(1, col), "^%s*$") == nil
 end
 
 ---@return boolean
@@ -22,10 +22,10 @@ cmp.setup({
   mapping = {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if copilot_visible() then
-        fallback()
+        require("copilot.suggestion").accept()
       elseif cmp.visible() then
         cmp.select_next_item()
-      elseif in_text() then
+      elseif has_text_before() then
         cmp.complete()
       else
         fallback()
