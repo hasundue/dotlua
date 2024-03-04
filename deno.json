@@ -1,5 +1,4 @@
 {
-  "lock": false,
   "imports": {
     "@std/assert": "jsr:@std/assert@0.218.2",
     "@std/fs": "jsr:@std/fs@0.218.2",
@@ -8,7 +7,9 @@
     "denops_std/": "https://deno.land/x/denops_std@v6.2.0/",
     "dpp_vim/": "https://deno.land/x/dpp_vim@v0.0.9/"
   },
+  "lock": false,
   "tasks": {
+    "build": "deno run -A ./nix/update_flake.ts",
     "check": "deno check ./**/*.ts"
   }
 }
