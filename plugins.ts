@@ -12,7 +12,11 @@ export default ClosedGroup(
   ]),
   // UI
   ...Group({ event: "BufRead" }, [
-    { repo: "neovim/nvim-lspconfig", depends: "cmp-nvim-lsp" },
+    {
+      repo: "neovim/nvim-lspconfig",
+      // Need plenary for our configuration
+      depends: ["cmp-nvim-lsp", "plenary.nvim"],
+    },
     "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
   ]),
@@ -70,6 +74,7 @@ export default ClosedGroup(
   },
   // Dependencies
   ...Group({ lazy: true }, [
+    "nvim-lua/plenary.nvim",
     "lambdalisue/mr.vim",
     "vim-denops/denops.vim",
   ]),
