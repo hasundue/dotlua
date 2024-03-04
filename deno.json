@@ -6,9 +6,6 @@
     "@std/path": "jsr:@std/path@0.218.2",
     "dax/": "https://deno.land/x/dax@0.39.2/",
     "denops_std/": "https://deno.land/x/denops_std@v6.2.0/",
-    "ddu_vim/": "https://deno.land/x/ddu_vim@v3.10.2/",
-    "ddu_ui_ff/": "https://deno.land/x/ddu_ui_ff@v1.1.0/",
-    "ddu_ui_filer/": "https://deno.land/x/ddu_ui_filer@v1.1.0/",
     "dpp_vim/": "https://deno.land/x/dpp_vim@v0.0.9/"
   },
   "tasks": {
