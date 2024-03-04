@@ -1,21 +1,15 @@
+local env = require("rc.dpp.env")
 local util = require("rc.dpp.util")
 
--- TODO: Make this configurable
-local dpp_name = "main"
-
-local dpp_base = vim.fn.stdpath("cache") .. "/dpp"
-local dpp_state = dpp_base .. "/" .. dpp_name .. "/state.vim"
-local dpp_config = vim.fn.stdpath("config") .. "/denops/dpp/config.ts"
-
-util.depends("dpp.vim")
-util.depends("dpp-ext-lazy")
+util.add("dpp.vim", { dev = true })
+util.add("dpp-ext-lazy")
 
 local dpp = require("dpp")
 
-if dpp.load_state(dpp_base, dpp_name) > 0 then
-  vim.notify("[dpp] Creating " .. dpp_state .. " ...")
+if dpp.load_state(env.base, env.name) then
+  vim.notify("[dpp] Creating " .. env.state .. " ...")
 
-  util.depends("denops.vim")
+  util.add("denops.vim")
 
   -- Need to load denops manually since we pass `--noplugin` to nvim
   vim.cmd("runtime! plugin/denops.vim")
@@ -30,11 +24,11 @@ if dpp.load_state(dpp_base, dpp_name) > 0 then
   }
 
   util.autocmd("DenopsReady", function()
-    dpp.make_state(dpp_base, dpp_config, dpp_name)
+    dpp.make_state(env.base, env.config, env.name)
   end)
 
   util.autocmd("Dpp:makeStatePost", function()
-    vim.notify("[dpp] Created " .. dpp_state)
-    dpp.load_state(dpp_base, dpp_name)
+    vim.notify("[dpp] Created " .. env.state)
+    dpp.load_state(env.base, env.name)
   end)
 end
