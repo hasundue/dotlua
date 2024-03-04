@@ -3,7 +3,12 @@ import { copy, exists } from "@std/fs";
 import { join } from "@std/path";
 import { CommandBuilder } from "dax/mod.ts";
 import { Plugin } from "dpp_vim/types.ts";
-import { $XDG_CACHE_HOME, $XDG_CONFIG_HOME, $XDG_DATA_HOME } from "./env.ts";
+import {
+  $HOME,
+  $XDG_CACHE_HOME,
+  $XDG_CONFIG_HOME,
+  $XDG_DATA_HOME,
+} from "./env.ts";
 import { PluginSpec, RepoName, toName } from "./specs.ts";
 
 const $CACHE = $XDG_CACHE_HOME + "/nvim/dpp/main/repos/github.com";
@@ -56,7 +61,7 @@ export async function initPlugin(
 ): Promise<Plugin & { path: string }> {
   spec = typeof spec === "string" ? { repo: spec } : spec;
   const name = toName(spec.repo);
-  const data = `${$DATA}/plugins/${name}`;
+  const data = spec.dev ? `${$HOME}/${name}` : `${$DATA}/plugins/${name}`;
 
   const mod = toLuaModuleName(name, spec.prefix ?? "");
   const lua_add =

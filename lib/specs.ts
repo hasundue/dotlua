@@ -23,6 +23,8 @@ export type PluginConfig<
   extends?: Rs | Rs[];
   /** The plugin(s) that this plugin depends on */
   depends?: Rs | Rs[];
+  /** True if the plugin is a development (local) version */
+  dev?: boolean;
   /** True if the plugin is lazy-loaded */
   lazy?: boolean;
   /** Specify the prefix of the plugin used for the directory name of Lua module */
