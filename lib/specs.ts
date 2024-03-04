@@ -51,7 +51,7 @@ export function Group<
 ): PluginSpec<Rs, Ns>[] {
   return specs.map(
     // TODO: Do not override but merge
-    (it) =>
+    (it): PluginSpec<Rs, Ns> =>
       typeof it === "string"
         ? { repo: it, ...descriptor }
         : { ...it, ...descriptor },
