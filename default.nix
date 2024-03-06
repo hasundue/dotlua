@@ -1,9 +1,10 @@
-{ lib, pkgs, neovim-plugins, ... }:
+{ lib, pkgs, neovim-nightly, neovim-plugins, system, ... }:
 
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    package = neovim-nightly.packages.${system}.neovim;
 
     plugins = with pkgs.vimPlugins.nvim-treesitter-parsers; [
       bash
