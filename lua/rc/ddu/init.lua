@@ -26,6 +26,7 @@ ddu.patch_global({
       },
       previewFloating = true,
       previewFloatingBorder = 'single',
+      previewSplit = 'vertical',
       previewWindowOptions = {
         { '&cursorline', 0 },
         { '&number',     0 },
