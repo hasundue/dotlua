@@ -16,6 +16,7 @@ function M.autocmd(pattern, callback)
   vim.api.nvim_create_autocmd("User", {
     pattern = pattern,
     group = "DppUserInit",
+    once = true,
     callback = callback,
   })
 end

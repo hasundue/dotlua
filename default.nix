@@ -1,4 +1,4 @@
-{ lib, pkgs, neovim-nightly, neovim-plugins, system, ... }:
+{ config, lib, pkgs, neovim-nightly, neovim-plugins, system, ... }:
 
 {
   programs.neovim = {
@@ -48,21 +48,13 @@
   programs.git.extraConfig.core.editor = "nvim";
 
   home =
-  /* let
+  let
     nvim = lib.getExe config.programs.neovim.finalPackage;
-  in */
+  in
   {
-    /* activation.neovimDppMakeState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      #!/bin/bash
-      STATE_DIR=~/.cache/dpp/nvim
-      if [ -d $STATE_DIR ]; then
-        $DRY_RUN_CMD rm -rf $STATE_DIR
-      fi
-      $DRY_RUN_CMD mkdir -p $STATE_DIR
-
-      # TODO: Make this work
-      # $DRY_RUN_CMD ${nvim} --headless -u ~/.local/share/nvim/make_state.vim
-    ''; */
+    activation.neovimDppMakeState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      $DRY_RUN_CMD ${nvim} -l ~/.config/nvim/lua/hook/clear_dpp_state.lua
+    '';
     packages = with pkgs; [
       deno
       lua-language-server
