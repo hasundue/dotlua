@@ -20,7 +20,7 @@ util.on_attach(nil, function(client, bufnr)
   end
 
   if client.supports_method("inlay_hint") then
-    vim.cmd('highlight link LspInlayHint Comment')
+    vim.cmd('highlight link LspInlayHint NonText')
     vim.lsp.inlay_hint.enable(bufnr)
   end
 
