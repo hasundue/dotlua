@@ -1,6 +1,3 @@
--- plugin-independent configuration
-require('rc.terminal')
-
 -- use fish
 vim.g.floaterm_shell = 'fish'
 
