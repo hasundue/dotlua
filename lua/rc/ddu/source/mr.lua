@@ -1,6 +1,6 @@
 local ddu = require('rc.ddu.util')
 
-ddu.map('file', {
+ddu.map('mr', {
   { '<C-s>', ddu.item_action('open', { command = 'split' }) },
   { '<C-v>', ddu.item_action('open', { command = 'vsplit' }) },
 })
