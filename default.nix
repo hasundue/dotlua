@@ -1,10 +1,15 @@
-{ config, lib, pkgs, neovim-nightly, neovim-plugins, system, ... }:
+{ config, lib, pkgs, neovim-plugins, ... }:
 
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = neovim-nightly.packages.${system}.neovim;
+
+    extraPackages = with pkgs; [
+      lua-language-server
+      nil
+      zls
+    ];
 
     plugins = with pkgs.vimPlugins.nvim-treesitter-parsers; [
       bash
@@ -55,12 +60,6 @@
     activation.neovimDppMakeState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       $DRY_RUN_CMD ${nvim} -l ~/.config/nvim/lua/hook/clear_dpp_state.lua
     '';
-    packages = with pkgs; [
-      deno
-      lua-language-server
-      nil
-      zls
-    ];
     shellAliases = rec {
       nvim = "nvim --noplugin";
       nv = "${nvim}";
