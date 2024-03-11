@@ -8,3 +8,10 @@ ddu.patch_local("buffer", {
     },
   },
 })
+
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = "*",
+  callback = function()
+    vim.call("ddu#redraw", "buffer", { method = "refreshItems" })
+  end,
+})
