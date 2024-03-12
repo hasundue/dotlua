@@ -33,7 +33,7 @@ require('kanagawa').setup({
     }
   end,
   terminalColors = true, -- define vim.g.terminal_color_{0,17}
-  transparent = true,    -- do not set background color
+  transparent = false,   -- set background color
   undercurl = true,      -- enable undercurls
 })
 
