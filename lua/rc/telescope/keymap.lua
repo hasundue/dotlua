@@ -1,7 +1,18 @@
 local builtin = require('telescope.builtin')
 
-vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>l', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>s', builtin.grep_string, {})
+local function map(key, picker)
+  vim.keymap.set('n', '<leader>' .. key, builtin[picker], {})
+end
+
+local mappings = {
+  buffers = "b",
+  find_files = "f",
+  help_tags = "h",
+  live_grep = "l",
+  resume = "r",
+  grep_string = "s",
+}
+
+for picker, key in pairs(mappings) do
+  map(key, picker)
+end
