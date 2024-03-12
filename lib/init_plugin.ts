@@ -103,6 +103,7 @@ export async function initPlugin(
     name,
     on_cmd: spec.cmd,
     on_event: spec.event,
+    on_lua: spec.on,
     on_source: spec.extends,
     path: spec.build ? cache : data,
     rtp: spec.rtp,

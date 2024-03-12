@@ -6,11 +6,12 @@ export default ClosedGroup(
     "Shougo/dpp.vim",
     "Shougo/dpp-ext-lazy",
   ]),
-  // Colorscheme
+  // Non-lazy plugins (colorscheme, libraries, etc.)
   ...Group({ lazy: false }, [
+    "nvim-lua/plenary.nvim",
     "rebelot/kanagawa.nvim",
   ]),
-  // UI
+  // Highlighting and diagnostics
   ...Group({ event: "BufRead" }, [
     {
       repo: "neovim/nvim-lspconfig",
@@ -20,15 +21,11 @@ export default ClosedGroup(
     "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
   ]),
-  // LSP
+  // nvim-lsp extensions
   ...Group({ extends: "nvim-lspconfig" }, [
     "ray-x/lsp_signature.nvim",
   ]),
-  // Loaded when cursor moved (normal-mode plugins)
-  ...Group({ event: "CursorMoved" }, [
-    "machakann/vim-sandwich",
-  ]),
-  // Loaded when starting insert mode
+  // Completion
   ...Group({ event: ["CmdlineEnter", "InsertEnter"] }, [
     "hrsh7th/nvim-cmp",
     "zbirenbaum/copilot.lua",
@@ -40,42 +37,25 @@ export default ClosedGroup(
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
   ]),
-  // denops.vim and related plugins
-  ...Group({ depends: "denops.vim" }, [
-    { repo: "Shougo/ddu.vim", cmd: "Ddu" },
+  // Loaded when cursor moved (normal-mode plugins)
+  ...Group({ event: "CursorMoved" }, [
+    "machakann/vim-sandwich",
   ]),
-  // ddu extensions
-  ...Group({ extends: "ddu.vim" }, [
-    "Shougo/ddu-ui-ff",
-    { repo: "hasundue/ddu-filter-zf", build: "deno task build" },
-  ]),
-  // ddu sources
-  ...Group({ extends: "ddu.vim", prefix: "ddu-source-" }, [
-    { repo: "kuuote/ddu-source-mr", depends: "mr.vim" },
-    "matsui54/ddu-source-file_external",
-    "matsui54/ddu-source-help",
-    "shun/ddu-source-buffer",
-    "shun/ddu-source-rg",
-    "uga-rosa/ddu-source-lsp",
-  ]),
-  // ddu kinds
-  ...Group({ extends: "ddu.vim", prefix: "ddu-kind-" }, [
-    "Shougo/ddu-kind-file",
-  ]),
-  // Terminal
+  // Commands
+  {
+    repo: "nvim-telescope/telescope.nvim",
+    depends: "plenary.nvim",
+    on: "telescope",
+  },
   {
     repo: "voldikss/vim-floaterm",
     cmd: ["FloatermNew", "FloatermToggle"],
   },
-  { // Markdown
+  {
     repo: "iamcco/markdown-preview.nvim",
     cmd: "MarkdownPreview",
     build: 'sh -c "cd app && yarn install"',
   },
-  // Dependencies
-  ...Group({ lazy: true }, [
-    "nvim-lua/plenary.nvim",
-    "lambdalisue/mr.vim",
-    "vim-denops/denops.vim",
-  ]),
+  // denops.vim is only required by dpp.vim
+  { repo: "vim-denops/denops.vim", lazy: true },
 );

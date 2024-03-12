@@ -27,6 +27,8 @@ export type PluginConfig<
   dev?: boolean;
   /** True if the plugin is lazy-loaded */
   lazy?: boolean;
+  /** Load the plugin when the Lua module is required */
+  on?: string;
   /** Specify the prefix of the plugin used for the directory name of Lua module */
   prefix?: string;
   /** Call `require(...)` when the plugin is sourced */
