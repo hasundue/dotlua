@@ -36,5 +36,8 @@ for i = 1, 9 do
   map('n', '<leader>' .. i, callback_cmd('FloatermToggle term-' .. i))
 end
 
--- hide the terminal
+-- hide the terminal (normal mode)
 map('n', '<C-[>', callback_cmd('FloatermHide'))
+
+-- hide the terminal (insert mode)
+map('t', '<C-c>', callback_cmd('FloatermHide'))
