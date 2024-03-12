@@ -27,6 +27,9 @@ require('kanagawa').setup({
       TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
       TelescopePreviewNormal = { bg = theme.ui.bg_dim },
       TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+      -- Floaterm
+      Floaterm = { bg = theme.ui.bg_dim },
+      FloatermBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
     }
   end,
   terminalColors = true, -- define vim.g.terminal_color_{0,17}
