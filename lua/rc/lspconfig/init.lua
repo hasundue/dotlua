@@ -51,7 +51,11 @@ util.on_attach(nil, function(client, bufnr)
   )
 end)
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = vim.tbl_deep_extend("force",
+  vim.lsp.protocol.make_client_capabilities(),
+  require("cmp_nvim_lsp").default_capabilities(),
+  { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } }
+)
 
 for _, path in ipairs(
   scandir.scan_dir(vim.fn.stdpath("config") .. "/lua/rc/lspconfig/server")
@@ -60,7 +64,8 @@ for _, path in ipairs(
   if server then
     local config = require("rc.lspconfig.server." .. server)
     lspconfig[server].setup(
-      vim.tbl_deep_extend("force", config, {
+      vim.tbl_deep_extend("keep", config, {
+        autostart = true,
         capabilities = capabilities,
       })
     )

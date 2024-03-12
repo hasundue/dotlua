@@ -8,6 +8,7 @@
     extraPackages = with pkgs; [
       lua-language-server
       nil
+      nixpkgs-fmt
       zls
     ];
 
