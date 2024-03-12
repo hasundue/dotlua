@@ -10,16 +10,12 @@ require('kanagawa').setup({
   overrides = function(colors)
     local theme = colors.theme
     return {
-      -- Transparent floating windows
-      NormalFloat = { bg = "none" },
-      FloatBorder = { bg = "none" },
-      FloatTitle = { bg = "none" },
       -- Dark completion menu
-      Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+      Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
       PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
       PmenuSbar = { bg = theme.ui.bg_m1 },
       PmenuThumb = { bg = theme.ui.bg_p2 },
-      -- Borderless telescope
+      -- Borderless Telescope
       TelescopeTitle = { fg = theme.ui.special, bold = true },
       TelescopePromptNormal = { bg = theme.ui.bg_p1 },
       TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
@@ -27,9 +23,9 @@ require('kanagawa').setup({
       TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
       TelescopePreviewNormal = { bg = theme.ui.bg_dim },
       TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-      -- Floaterm
-      Floaterm = { bg = theme.ui.bg_dim },
-      FloatermBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+      -- Borderless Floaterm
+      Floaterm = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+      FloatermBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
     }
   end,
   terminalColors = true, -- define vim.g.terminal_color_{0,17}
