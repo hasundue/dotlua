@@ -1,8 +1,6 @@
-local lspconfig = require("lspconfig")
-
 return {
   cmd = { "deno", "lsp" },
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+  root_dir = vim.uv.cwd,
   settings = {
     deno = {
       enable = true,
