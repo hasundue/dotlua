@@ -6,12 +6,20 @@ util.add("dpp-ext-lazy")
 
 local dpp = require("dpp")
 
-if dpp.load_state(env.base, env.name) then
+local function load_state(base, name)
+  if dpp.load_state(base, name) then
+    return true
+  end
+  vim.cmd("filetype indent plugin on")
+  vim.cmd("syntax on")
+end
+
+if load_state(env.base, env.name) then
   vim.notify("[dpp] Creating " .. env.state .. " ...")
 
   util.add("denops.vim")
 
-  -- Need to load denops manually since we pass `--noplugin` to nvim
+  -- Need to source denops manually since we pass `--noplugin` to nvim
   vim.cmd("runtime! plugin/denops.vim")
   require("rc.denops")
 
@@ -21,8 +29,7 @@ if dpp.load_state(env.base, env.name) then
 
   util.autocmd("Dpp:makeStatePost", function()
     vim.notify("[dpp] Created " .. env.state)
-
     -- Immediately load the created state
-    dpp.load_state(env.base, env.name)
+    load_state(env.base, env.name)
   end)
 end
