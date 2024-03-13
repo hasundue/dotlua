@@ -25,8 +25,10 @@
     "plugins/cmp-path" = { url = "github:hrsh7th/cmp-path"; flake = false; };
     "plugins/vim-sandwich" = { url = "github:machakann/vim-sandwich"; flake = false; };
     "plugins/telescope.nvim" = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
+    "plugins/oil.nvim" = { url = "github:stevearc/oil.nvim"; flake = false; };
     "plugins/vim-floaterm" = { url = "github:voldikss/vim-floaterm"; flake = false; };
     "plugins/markdown-preview.nvim" = { url = "github:iamcco/markdown-preview.nvim"; flake = false; };
+    "plugins/nvim-web-devicons" = { url = "github:nvim-tree/nvim-web-devicons"; flake = false; };
     "plugins/denops.vim" = { url = "github:vim-denops/denops.vim"; flake = false; };
     /* PLUGINS END */
   };

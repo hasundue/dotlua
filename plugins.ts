@@ -44,8 +44,13 @@ export default ClosedGroup(
   // Commands
   {
     repo: "nvim-telescope/telescope.nvim",
-    depends: "plenary.nvim",
+    depends: ["nvim-web-devicons", "plenary.nvim"],
     on: "telescope",
+  },
+  { 
+    repo: "stevearc/oil.nvim",
+    depends: "nvim-web-devicons",
+    on: "oil",
   },
   {
     repo: "voldikss/vim-floaterm",
@@ -56,6 +61,9 @@ export default ClosedGroup(
     cmd: "MarkdownPreview",
     build: 'sh -c "cd app && yarn install"',
   },
-  // denops.vim is only required by dpp.vim
-  { repo: "vim-denops/denops.vim", lazy: true },
+  // Dependencies
+  ...Group({ lazy: true }, [
+    "nvim-tree/nvim-web-devicons",
+    "vim-denops/denops.vim",
+  ]),
 );
