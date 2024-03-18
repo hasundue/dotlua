@@ -36,8 +36,14 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
+  snippet = {
+    expand = function(args)
+      require("snippy").expand_snippet(args.body)
+    end
+  },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
+    { name = "snippy" },
   }, {
     { name = "buffer" },
   }),

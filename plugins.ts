@@ -34,8 +34,11 @@ export default ClosedGroup(
   ...Group({ extends: "nvim-cmp" }, [
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-emoji",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
+    "dcampos/cmp-snippy",
+    "dcampos/nvim-snippy",
   ]),
   // Loaded when cursor moved (normal-mode plugins)
   ...Group({ event: "CursorMoved" }, [
@@ -47,7 +50,7 @@ export default ClosedGroup(
     depends: ["nvim-web-devicons", "plenary.nvim"],
     on: "telescope",
   },
-  { 
+  {
     repo: "stevearc/oil.nvim",
     depends: "nvim-web-devicons",
     on: "oil",

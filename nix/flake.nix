@@ -21,8 +21,11 @@
     "plugins/copilot.lua" = { url = "github:zbirenbaum/copilot.lua"; flake = false; };
     "plugins/cmp-buffer" = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
     "plugins/cmp-cmdline" = { url = "github:hrsh7th/cmp-cmdline"; flake = false; };
+    "plugins/cmp-emoji" = { url = "github:hrsh7th/cmp-emoji"; flake = false; };
     "plugins/cmp-nvim-lsp" = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
     "plugins/cmp-path" = { url = "github:hrsh7th/cmp-path"; flake = false; };
+    "plugins/cmp-snippy" = { url = "github:dcampos/cmp-snippy"; flake = false; };
+    "plugins/nvim-snippy" = { url = "github:dcampos/nvim-snippy"; flake = false; };
     "plugins/vim-sandwich" = { url = "github:machakann/vim-sandwich"; flake = false; };
     "plugins/telescope.nvim" = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
     "plugins/oil.nvim" = { url = "github:stevearc/oil.nvim"; flake = false; };
