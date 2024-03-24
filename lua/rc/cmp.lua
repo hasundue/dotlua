@@ -46,6 +46,8 @@ cmp.setup({
     { name = "snippy" },
   }, {
     { name = "buffer" },
+  }, {
+    { name = "emoji" },
   }),
 })
 
