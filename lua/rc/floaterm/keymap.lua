@@ -40,4 +40,4 @@ end
 map('n', '<C-[>', callback_cmd('FloatermHide'))
 
 -- hide the terminal (insert mode)
-map('t', '<C-c>', callback_cmd('FloatermHide'))
+-- map('t', '<C-c>', callback_cmd('FloatermHide'))
