@@ -5,7 +5,7 @@ local cmp = require("cmp")
 local function has_text_before()
   local line = vim.fn.getline(".")
   local col = vim.fn.col(".")
-  return string.match(line:sub(1, col), "^%s*$") == nil
+  return col == 1 or string.match(line:sub(1, col - 1), "^%s*$") == nil
 end
 
 ---@return boolean
