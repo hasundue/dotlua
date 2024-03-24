@@ -10,7 +10,6 @@ return {
       inlayHints = {
         enabled = "on",
         functionLikeReturnTypes = { enabled = true },
-        parameterTypes = { enabled = true },
       },
     },
   },
