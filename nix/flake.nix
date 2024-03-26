@@ -31,6 +31,7 @@
     "plugins/oil.nvim" = { url = "github:stevearc/oil.nvim"; flake = false; };
     "plugins/vim-floaterm" = { url = "github:voldikss/vim-floaterm"; flake = false; };
     "plugins/markdown-preview.nvim" = { url = "github:iamcco/markdown-preview.nvim"; flake = false; };
+    "plugins/peek.nvim" = { url = "github:toppair/peek.nvim"; flake = false; };
     "plugins/nvim-web-devicons" = { url = "github:nvim-tree/nvim-web-devicons"; flake = false; };
     "plugins/denops.vim" = { url = "github:vim-denops/denops.vim"; flake = false; };
     /* PLUGINS END */

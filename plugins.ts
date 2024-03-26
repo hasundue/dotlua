@@ -64,6 +64,11 @@ export default ClosedGroup(
     cmd: "MarkdownPreview",
     build: 'sh -c "cd app && yarn install"',
   },
+  {
+    repo: "toppair/peek.nvim",
+    on: "peek",
+    build: "deno task -q build:fast",
+  },
   // Dependencies
   ...Group({ lazy: true }, [
     "nvim-tree/nvim-web-devicons",
