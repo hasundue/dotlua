@@ -8,12 +8,6 @@ require("copilot").setup({
     enabled = false,
   },
   suggestion = {
-    enabled = true,
-    auto_trigger = true,
-    keymap = {
-      accept_line = "<C-f>",
-      accept_word = "<M-f>",
-      dismiss = "<C-e>",
-    },
+    enabled = false, -- use copilot-cmp instead
   },
 })
