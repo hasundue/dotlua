@@ -39,10 +39,6 @@ export default ClosedGroup(
     "hrsh7th/cmp-path",
     "dcampos/cmp-snippy",
     "dcampos/nvim-snippy",
-    {
-      repo: "zbirenbaum/copilot-cmp",
-      setup: "copilot_cmp",
-    },
   ]),
   // Loaded when cursor moved (normal-mode plugins)
   ...Group({ event: "CursorMoved" }, [
