@@ -22,6 +22,9 @@ cmp.setup({
   mapping = {
     ['<CR>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
+        if copilot_visible() then
+          require("copilot.suggestion").dismiss()
+        end
         cmp.confirm({ select = true })
       else
         fallback()
