@@ -3,9 +3,9 @@ local cmp = require("cmp")
 -- True if we are in the beginning of the line, ignoring whitespaces and tabs.
 ---@return boolean
 local function has_text_before()
-  local line = vim.fn.getline(".")
-  local col = vim.fn.col(".")
-  return col == 1 or string.match(line:sub(1, col - 1), "^%s*$") == nil
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 ---@return boolean
@@ -20,6 +20,13 @@ end
 
 cmp.setup({
   mapping = {
+    ['<CR>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.confirm({ select = true })
+      else
+        fallback()
+      end
+    end),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if copilot_visible() then
         require("copilot.suggestion").accept()
@@ -31,10 +38,9 @@ cmp.setup({
         fallback()
       end
     end),
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
   },
   snippet = {
     expand = function(args)
