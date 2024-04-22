@@ -20,8 +20,10 @@ util.on_attach(nil, function(client, bufnr)
   end
 
   if client.supports_method("inlay_hint") then
+    map('n', "<M-i>", function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr))
+    end)
     vim.cmd('highlight link LspInlayHint NonText')
-    vim.lsp.inlay_hint.enable(bufnr)
   end
 
   if client.supports_method("format") then
