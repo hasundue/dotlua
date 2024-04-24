@@ -6,7 +6,7 @@ end
 
 local mappings = {
   buffers = "b",
-  find_files = "f",
+  git_files = "f",
   help_tags = "h",
   live_grep = "l",
   resume = "r",
