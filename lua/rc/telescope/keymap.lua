@@ -5,6 +5,7 @@ local function map(key, picker)
 end
 
 local mappings = {
+  find_files = "a",
   buffers = "b",
   git_files = "f",
   help_tags = "h",
