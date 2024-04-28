@@ -15,9 +15,6 @@ require('kanagawa').setup({
       FloatBorder = { bg = "none" },
       FloatTitle = { bg = "none" },
 
-      -- Darker background
-      NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_dim },
-
       -- Dark completion menu
       Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
       PmenuSel = { fg = "none", bg = theme.ui.bg_p2 },
