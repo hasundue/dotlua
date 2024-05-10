@@ -64,18 +64,29 @@ export async function initPlugin(
   const data = spec.dev ? `${$HOME}/${name}` : `${$DATA}/plugins/${name}`;
 
   const mod = toLuaModuleName(name, spec.prefix ?? "");
-  const lua_add =
-    spec.lazy === false && spec.rtp !== "" && await hasInitLua(mod)
-      ? "require('rc." + mod + "')"
-      : await hasKeymapLua(mod)
-      ? "require('rc." + mod + ".keymap')"
-      : undefined;
-  const lua_source = spec.require
-    ? "require('" + spec.require + "')"
-    : spec.setup
-    ? "require('" + spec.setup + "').setup()"
-    : spec.lazy !== false && await hasInitLua(mod)
-    ? "require('rc." + mod + "')"
+
+  const lua_add = await hasKeymapLua(mod)
+    ? `require("rc.${mod}.keymap")`
+    : spec.lazy === false && spec.rtp !== ""
+    ? (
+      await hasInitLua(mod)
+        ? `require("rc.${mod}")`
+        : spec.require
+        ? `require("${spec.require}")`
+        : spec.setup
+        ? `require("${spec.setup}").setup()`
+        : undefined
+    )
+    : undefined;
+
+  const lua_source = spec.lazy !== false
+    ? (spec.require
+      ? `require("${spec.require}")`
+      : spec.setup
+      ? `require("${spec.setup}").setup()`
+      : await hasInitLua(mod)
+      ? `require("rc.${mod}")`
+      : undefined)
     : undefined;
 
   const cache = `${$CACHE}/${spec.repo}`;
