@@ -13,7 +13,6 @@ export default ClosedGroup(
     {
       repo: "nvim-lualine/lualine.nvim",
       depends: "nvim-web-devicons",
-      setup: "lualine",
     },
   ]),
   ...Group({ event: "CursorHold" }, [
