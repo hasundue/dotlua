@@ -6,8 +6,9 @@ export default ClosedGroup(
     "Shougo/dpp.vim",
     "Shougo/dpp-ext-lazy",
   ]),
-  // Non-lazy plugins (colorscheme, libraries, etc.)
+  // Non-lazy plugins (colorscheme and UIs)
   ...Group({ lazy: false }, [
+    "b0o/incline.nvim",
     "nvim-lua/plenary.nvim",
     "rebelot/kanagawa.nvim",
   ]),
