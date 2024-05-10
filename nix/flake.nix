@@ -13,8 +13,9 @@
     "plugins/dpp-ext-lazy" = { url = "github:Shougo/dpp-ext-lazy"; flake = false; };
     "plugins/incline.nvim" = { url = "github:b0o/incline.nvim"; flake = false; };
     "plugins/kanagawa.nvim" = { url = "github:rebelot/kanagawa.nvim"; flake = false; };
-    "plugins/nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
+    "plugins/lualine.nvim" = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
     "plugins/nvim-treesitter" = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
+    "plugins/nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     "plugins/gitsigns.nvim" = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
     "plugins/lsp_signature.nvim" = { url = "github:ray-x/lsp_signature.nvim"; flake = false; };
     "plugins/nvim-cmp" = { url = "github:hrsh7th/nvim-cmp"; flake = false; };

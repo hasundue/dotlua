@@ -10,15 +10,20 @@ export default ClosedGroup(
   ...Group({ lazy: false }, [
     "b0o/incline.nvim",
     "rebelot/kanagawa.nvim",
+    {
+      repo: "nvim-lualine/lualine.nvim",
+      depends: "nvim-web-devicons",
+      setup: "lualine",
+    },
   ]),
   // Highlighting and diagnostics
   ...Group({ event: "BufRead" }, [
+    "nvim-treesitter/nvim-treesitter",
     {
       repo: "neovim/nvim-lspconfig",
       // Need plenary for our configuration
       depends: ["cmp-nvim-lsp", "plenary.nvim"],
     },
-    "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
   ]),
   // nvim-lsp extensions
