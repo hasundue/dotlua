@@ -21,7 +21,7 @@ util.on_attach(nil, function(client, bufnr)
 
   if client.supports_method("inlay_hint") then
     map('n', "<M-i>", function()
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr))
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
     end)
     vim.cmd('highlight link LspInlayHint NonText')
   end
