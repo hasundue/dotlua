@@ -35,10 +35,6 @@ export default ClosedGroup(
     "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
   ]),
-  // nvim-lsp extensions
-  ...Group({ extends: "nvim-lspconfig" }, [
-    "ray-x/lsp_signature.nvim",
-  ]),
   // Completion
   ...Group({ event: ["CmdlineEnter", "InsertEnter"] }, [
     "hrsh7th/nvim-cmp",
