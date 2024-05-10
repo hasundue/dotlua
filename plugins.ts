@@ -30,7 +30,7 @@ export default ClosedGroup(
     {
       repo: "neovim/nvim-lspconfig",
       // plenary is required in our configuration
-      depends: ["cmp-nvim-lsp", "plenary.nvim"],
+      depends: ["cmp-nvim-lsp", "noice.nvim", "plenary.nvim"],
     },
     "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },

@@ -15,6 +15,10 @@ require('kanagawa').setup({
       FloatBorder = { bg = "none" },
       FloatTitle = { bg = "none" },
 
+      -- Trasparent Noice
+      NoiceMini = { fg = ui.fg_dim, bg = "none" },
+      NoiceLspProgressTitle = { fg = ui.fg_dim },
+
       -- Transparent Telescope
       TelescopeBorder = { bg = "none" },
 

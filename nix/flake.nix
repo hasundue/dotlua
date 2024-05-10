@@ -42,25 +42,27 @@
     /* PLUGINS END */
   };
 
-  outputs = {
-    nixpkgs,
-    flake-utils,
-    neovim-nightly,
-    ...
-  } @ inputs:
-    flake-utils.lib.eachDefaultSystem (system: let
+  outputs =
+    { nixpkgs
+    , flake-utils
+    , neovim-nightly
+    , ...
+    } @ inputs:
+    flake-utils.lib.eachDefaultSystem (system:
+    let
       pkgs = import nixpkgs {
         inherit system;
         overlays = [ neovim-nightly.overlays.default ];
-      }; 
+      };
       lib = pkgs.lib;
-    in {
+    in
+    {
       packages = with lib; mapAttrs
-          (name: input: import ./pack_plugin.nix { inherit pkgs lib; } name input)
-          (mapAttrs'
-            (name: input: nameValuePair (removePrefix "plugins/" name) input)
-            (filterAttrs (name: value: hasPrefix "plugins/" name) inputs)
-          );
+        (name: input: import ./pack_plugin.nix { inherit pkgs lib; } name input)
+        (mapAttrs'
+          (name: input: nameValuePair (removePrefix "plugins/" name) input)
+          (filterAttrs (name: value: hasPrefix "plugins/" name) inputs)
+        );
     }
-  );
+    );
 }
