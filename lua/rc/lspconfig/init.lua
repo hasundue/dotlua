@@ -36,21 +36,16 @@ util.on_attach(nil, function(client, bufnr)
     })
   end
 
-  require("lsp_signature").on_attach(
-    {
-      bind = true,
-      doc_lines = 0,
-      floating_window = true,
-      floating_window_off_y = 0,
-      handler_opts = {
-        border = "none",
-      },
-      hint_enable = false,
-      padding = ' ',
-      transparency = 30,
+  --[[ disable signature help tentatively cause it crashes
+  require("lsp_signature").on_attach({
+    bind = true,
+    doc_lines = 0,
+    handler_opts = {
+      border = "rounded",
     },
-    bufnr
-  )
+    hint_enable = false,
+    padding = ' ',
+  }, bufnr) --]]
 end)
 
 local capabilities = vim.tbl_deep_extend("force",
