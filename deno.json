@@ -10,6 +10,10 @@
   "lock": false,
   "tasks": {
     "build": "deno run -A ./nix/update_flake.ts",
-    "check": "deno check ./**/*.ts"
+    "check": "deno check ./**/*.ts",
+    "clean": "rm -rf $HOME/.config/nvim",
+    "clear": "nvim -l lua/hook/clear_dpp_state.lua",
+    "deploy": "rsync -avz . $HOME/.config/nvim",
+    "test": "deno task clean && deno task deploy && deno task clear"
   }
 }
