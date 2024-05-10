@@ -8,7 +8,7 @@ export default ClosedGroup(
   ]),
   // Colorscheme and UIs
   ...Group({ lazy: false }, [
-    "b0o/incline.nvim",
+    "nvim-tree/nvim-web-devicons",
     "rebelot/kanagawa.nvim",
     {
       repo: "nvim-lualine/lualine.nvim",
@@ -16,14 +16,24 @@ export default ClosedGroup(
       setup: "lualine",
     },
   ]),
+  ...Group({ event: "CursorHold" }, [
+    {
+      repo: "folke/noice.nvim",
+      depends: ["nvim-cmp", "nui.nvim", "nvim-notify"],
+    },
+  ]),
   // Highlighting and diagnostics
   ...Group({ event: "BufRead" }, [
-    "nvim-treesitter/nvim-treesitter",
+    {
+      repo: "b0o/incline.nvim",
+      depends: "nvim-web-devicons",
+    },
     {
       repo: "neovim/nvim-lspconfig",
-      // Need plenary for our configuration
+      // plenary is required in our configuration
       depends: ["cmp-nvim-lsp", "plenary.nvim"],
     },
+    "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
   ]),
   // nvim-lsp extensions
@@ -74,10 +84,11 @@ export default ClosedGroup(
     on: "peek",
     build: "deno task -q build:fast",
   },
-  // Dependencies
+  // Libraries
   ...Group({ lazy: true }, [
+    "MunifTanjim/nui.nvim",
     "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
+    "rcarriga/nvim-notify",
     "vim-denops/denops.vim",
   ]),
 );

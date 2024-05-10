@@ -15,8 +15,8 @@ opt.breakindent = true
 opt.pumheight = 10
 opt.pumblend = 15
 
-opt.cmdheight = 1
-opt.laststatus = 3
+opt.cmdheight = 0  -- replaced with noice.nvim
+opt.laststatus = 3 -- replaced with incline.nvim
 
 --
 -- commands -------------------------------------

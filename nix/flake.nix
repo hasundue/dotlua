@@ -11,9 +11,11 @@
     /* PLUGINS START */
     "plugins/dpp.vim" = { url = "github:Shougo/dpp.vim"; flake = false; };
     "plugins/dpp-ext-lazy" = { url = "github:Shougo/dpp-ext-lazy"; flake = false; };
-    "plugins/incline.nvim" = { url = "github:b0o/incline.nvim"; flake = false; };
+    "plugins/nvim-web-devicons" = { url = "github:nvim-tree/nvim-web-devicons"; flake = false; };
     "plugins/kanagawa.nvim" = { url = "github:rebelot/kanagawa.nvim"; flake = false; };
     "plugins/lualine.nvim" = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
+    "plugins/incline.nvim" = { url = "github:b0o/incline.nvim"; flake = false; };
+    "plugins/noice.nvim" = { url = "github:folke/noice.nvim"; flake = false; };
     "plugins/nvim-treesitter" = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     "plugins/nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     "plugins/gitsigns.nvim" = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
@@ -33,8 +35,9 @@
     "plugins/vim-floaterm" = { url = "github:voldikss/vim-floaterm"; flake = false; };
     "plugins/markdown-preview.nvim" = { url = "github:iamcco/markdown-preview.nvim"; flake = false; };
     "plugins/peek.nvim" = { url = "github:toppair/peek.nvim"; flake = false; };
+    "plugins/nui.nvim" = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
     "plugins/plenary.nvim" = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
-    "plugins/nvim-web-devicons" = { url = "github:nvim-tree/nvim-web-devicons"; flake = false; };
+    "plugins/nvim-notify" = { url = "github:rcarriga/nvim-notify"; flake = false; };
     "plugins/denops.vim" = { url = "github:vim-denops/denops.vim"; flake = false; };
     /* PLUGINS END */
   };
