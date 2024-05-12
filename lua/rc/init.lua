@@ -58,8 +58,6 @@ opt.clipboard = "unnamedplus"
 --
 -- terminal -------------------------------------
 --
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
-
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = { "*" },
   callback = function()

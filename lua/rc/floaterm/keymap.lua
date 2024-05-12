@@ -1,43 +1,40 @@
----@param mode string
----@param keys string
----@param func function
-local function map(mode, keys, func)
-  vim.keymap.set(mode, keys, func, { noremap = true, silent = true })
+local fn = require("lib.fn")
+
+local function map(mode, lhs, rhs)
+  vim.keymap.set(mode, lhs, rhs, { noremap = true })
 end
 
----@param name string
----@param cmd string
-local function callback_open(name, cmd)
+local function maplocal(mode, lhs, rhs)
+  vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, buffer = true })
+end
+
+local function open(name, cmd)
   return function()
-    local dir = vim.fn.expand('%:p:h')
-    local root = vim.call('floaterm#path#get_root', dir)
-    local bufname = name .. ':///' .. root
-    local bufnr = vim.call('floaterm#terminal#get_bufnr', bufname)
+    local dir = vim.fn.expand("%:p:h")
+    local root = vim.call("floaterm#path#get_root", dir)
+    local bufname = name .. ":///" .. root
+    local bufnr = vim.call("floaterm#terminal#get_bufnr", bufname)
     if (bufnr < 0) then
-      vim.cmd('FloatermNew --cwd=' .. root .. ' --name=' .. bufname .. ' ' .. cmd)
+      vim.cmd("FloatermNew --cwd=" .. root .. " --name=" .. bufname .. " " .. cmd)
     else
-      vim.cmd('FloatermShow ' .. bufname)
+      vim.cmd("FloatermShow " .. bufname)
     end
   end
 end
 
--- gitui
-map('n', '<leader>g', callback_open('gitui', 'gitui'))
-
----@param cmd string
-local function callback_cmd(cmd)
-  return function()
-    vim.cmd(cmd)
-  end
-end
+-- lazygit
+map("n", "<leader>g", open("lazygit", "lazygit"))
 
 -- map `<leader>{n}` for n = 1..9 to open a corresponding terminal
 for i = 1, 9 do
-  map('n', '<leader>' .. i, callback_cmd('FloatermToggle term-' .. i))
+  map("n", "<leader>" .. i, fn.cmd("FloatermToggle term-" .. i))
 end
 
--- hide the terminal (normal mode)
-map('n', '<C-[>', callback_cmd('FloatermHide'))
-
--- hide the terminal (insert mode)
--- map('t', '<C-c>', callback_cmd('FloatermHide'))
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  pattern = { "*:fish" },
+  callback = function()
+    maplocal("t", "<Esc>", "<C-\\><C-n>")
+    maplocal("t", "<C-c>", fn.cmd("FloatermHide"))
+    maplocal("n", "<C-[>", fn.cmd("FloatermHide"))
+  end
+})
