@@ -14,6 +14,7 @@
     "clean": "rm -rf $HOME/.config/nvim",
     "clear": "nvim -l lua/hook/clear_dpp_state.lua",
     "deploy": "rsync -avz . $HOME/.config/nvim",
+    "switch": "deno task clean && cd $HOME/dotnix && nix develop --command switch",
     "test": "deno task clean && deno task deploy && deno task clear"
   }
 }
