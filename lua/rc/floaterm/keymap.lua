@@ -34,7 +34,6 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = { "*:fish" },
   callback = function()
     maplocal("t", "<Esc>", "<C-\\><C-n>")
-    maplocal("t", "<C-c>", fn.cmd("FloatermHide"))
     maplocal("n", "<C-[>", fn.cmd("FloatermHide"))
   end
 })
