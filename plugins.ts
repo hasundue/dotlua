@@ -57,7 +57,7 @@ export default ClosedGroup(
   // Commands
   {
     repo: "nvim-telescope/telescope.nvim",
-    depends: ["nvim-web-devicons", "plenary.nvim"],
+    depends: ["nvim-treesitter", "nvim-web-devicons", "plenary.nvim"],
     on: "telescope",
   },
   {
