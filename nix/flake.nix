@@ -37,25 +37,21 @@
     /* PLUGINS END */
   };
 
-  outputs =
-    { nixpkgs
-    , flake-utils
-    , ...
-    } @ inputs:
+  outputs = { nixpkgs, flake-utils, ... } @ inputs:
     flake-utils.lib.eachDefaultSystem (system:
-    let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-      lib = pkgs.lib;
-    in
-    {
-      packages = with lib; mapAttrs
-        (name: input: import ./pack_plugin.nix { inherit pkgs lib; } name input)
-        (mapAttrs'
-          (name: input: nameValuePair (removePrefix "plugins/" name) input)
-          (filterAttrs (name: value: hasPrefix "plugins/" name) inputs)
-        );
-    }
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+        lib = pkgs.lib;
+      in
+      {
+        packages = with lib; mapAttrs
+          (name: input: import ./pack_plugin.nix { inherit pkgs lib; } name input)
+          (mapAttrs'
+            (name: input: nameValuePair (removePrefix "plugins/" name) input)
+            (filterAttrs (name: value: hasPrefix "plugins/" name) inputs)
+          );
+      }
     );
 }
