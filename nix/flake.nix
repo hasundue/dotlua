@@ -1,12 +1,8 @@
 {
-  description = "hasundue's Neovim configuration";
+  description = "hasundue's Neovim plugins";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     /* PLUGINS START */
     "plugins/dpp.vim" = { url = "github:Shougo/dpp.vim"; flake = false; };
@@ -44,14 +40,12 @@
   outputs =
     { nixpkgs
     , flake-utils
-    , neovim-nightly
     , ...
     } @ inputs:
     flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ neovim-nightly.overlays.default ];
       };
       lib = pkgs.lib;
     in
