@@ -25,6 +25,9 @@ end
 -- lazygit
 map("n", "<leader>g", open("lazygit", "lazygit"))
 
+-- gh-dash
+map("n", "<leader>d", open("gh-dash", "gh dash"))
+
 -- map `<leader>{n}` for n = 1..9 to open a corresponding terminal
 for i = 1, 9 do
   map("n", "<leader>" .. i, fn.cmd("FloatermToggle term-" .. i))
