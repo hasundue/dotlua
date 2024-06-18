@@ -10,6 +10,7 @@
       nodePackages.yarn # for makrdown-preview.nvim
       nil
       nixpkgs-fmt
+      rust-analyzer
       zls
     ];
 
