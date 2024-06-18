@@ -34,7 +34,7 @@
       python
       regex
       ron
-      rust
+      # rust
       scheme
       tsx
       typescript
