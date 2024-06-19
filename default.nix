@@ -11,6 +11,7 @@
       nil
       nixpkgs-fmt
       rust-analyzer
+      rustfmt
       zls
     ];
 
