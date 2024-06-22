@@ -1,5 +1,5 @@
 return {
-  cmd = { "deno", "lsp" },
+  cmd = { "deno", "lsp", "--unstable" },
   root_dir = vim.uv.cwd,
   settings = {
     deno = {
