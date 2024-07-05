@@ -5,7 +5,8 @@ require("incline").setup({
     margin = { horizontal = 0 },
   },
   render = function(props)
-    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+    local bufname = vim.api.nvim_buf_get_name(props.buf)
+    local filename = vim.fn.fnamemodify(bufname, ":~:.")
     if filename == "" then
       return nil
     end
