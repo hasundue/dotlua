@@ -21,7 +21,7 @@
       gitcommit
       go
       graphql
-      javascript
+      # javascript
       jsdoc
       json
       jsonc
@@ -31,11 +31,11 @@
       markdown
       markdown_inline
       mermaid
-      nix
+      # nix
       python
       regex
       ron
-      # rust
+      rust
       scheme
       tsx
       typescript
@@ -57,18 +57,18 @@
   programs.git.extraConfig.core.editor = "nvim";
 
   home =
-  let
-    nvim = lib.getExe config.programs.neovim.finalPackage;
-  in
-  {
-    activation.neovimDppMakeState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      $DRY_RUN_CMD ${nvim} -l ~/.config/nvim/lua/hook/clear_dpp_state.lua
-    '';
-    shellAliases = rec {
-      nvim = "nvim --noplugin";
-      nv = "${nvim}";
+    let
+      nvim = lib.getExe config.programs.neovim.finalPackage;
+    in
+    {
+      activation.neovimDppMakeState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+        $DRY_RUN_CMD ${nvim} -l ~/.config/nvim/lua/hook/clear_dpp_state.lua
+      '';
+      shellAliases = rec {
+        nvim = "nvim --noplugin";
+        nv = "${nvim}";
+      };
     };
-  };
 
   xdg.configFile = {
     "nvim".source = ./.;
