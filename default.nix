@@ -7,6 +7,7 @@
 
     extraPackages = with pkgs; [
       lua-language-server
+      nodePackages.typescript-language-server
       nodePackages.yarn # for makrdown-preview.nvim
       nil
       nixpkgs-fmt
