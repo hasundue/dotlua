@@ -18,6 +18,15 @@ local function copilot_visible()
   end
 end
 
+local sources = cmp.config.sources({
+  { name = "nvim_lsp" },
+  { name = "snippy" },
+}, {
+  { name = "buffer" },
+}, {
+  { name = "emoji" },
+})
+
 cmp.setup({
   mapping = {
     ['<CR>'] = cmp.mapping(function(fallback)
@@ -50,15 +59,25 @@ cmp.setup({
       require("snippy").expand_snippet(args.body)
     end
   },
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "snippy" },
-  }, {
-    { name = "buffer" },
-  }, {
-    { name = "emoji" },
-    { name = "skkeleton" },
-  }),
+  sources = sources,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "skkeleton-enable-post",
+  group = vim.api.nvim_create_augroup("skkeleton-enable-post", { clear = true }),
+  callback = function()
+    cmp.setup.buffer({
+      sources = cmp.config.sources({ { name = "skkeleton" } }),
+    })
+  end
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "skkeleton-disable-post",
+  group = vim.api.nvim_create_augroup("skkeleton-disable-post", { clear = true }),
+  callback = function()
+    cmp.setup.buffer({ sources = sources })
+  end
 })
 
 cmp.setup.cmdline({ '/', '?' }, {
