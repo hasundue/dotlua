@@ -66,3 +66,10 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
     vim.opt_local.relativenumber = false
   end
 })
+
+--
+-- ambiwidth -------------------------------------
+--
+vim.fn.setcellwidths({
+  { 0x25BC, 0x25BD, 2 } -- ▼ ▽
+})
