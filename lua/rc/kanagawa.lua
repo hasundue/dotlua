@@ -10,23 +10,23 @@ require('kanagawa').setup({
   overrides = function(colors)
     local ui = colors.theme.ui
     return {
-      -- Transparent floating windows
+      -- floating windows
       NormalFloat = { bg = "none" },
       FloatBorder = { bg = "none" },
       FloatTitle = { bg = "none" },
 
-      -- Trasparent Noice
+      -- noice.nvim
       NoiceMini = { fg = ui.fg_dim, bg = "none" },
       NoiceLspProgressTitle = { fg = ui.fg_dim },
 
-      -- Transparent Telescope
+      -- telescope.nvim
       TelescopeBorder = { bg = "none" },
 
-      -- Make Floaterm consistent with Telescope
+      -- make floaterm consistent with telescope
       Floaterm = { link = "TelescopeResultsNormal" },
       FloatermBorder = { link = "TelescopeBorder" },
 
-      -- Dark completion menu
+      -- completion menu
       Pmenu = { fg = ui.shade0, bg = ui.bg_p1 },
       PmenuSel = { fg = "none", bg = ui.bg_p2 },
       PmenuSbar = { bg = ui.bg_m1 },
