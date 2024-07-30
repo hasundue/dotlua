@@ -8,17 +8,17 @@ export default ClosedGroup(
   ]),
   // Colorscheme and UIs
   ...Group({ lazy: false }, [
-    "nvim-tree/nvim-web-devicons",
     "rebelot/kanagawa.nvim",
     {
       repo: "nvim-lualine/lualine.nvim",
       depends: "nvim-web-devicons",
     },
+    "nvim-tree/nvim-web-devicons",
   ]),
   ...Group({ event: "CursorHold" }, [
     {
       repo: "folke/noice.nvim",
-      depends: ["nvim-cmp", "nui.nvim", "nvim-notify"],
+      depends: ["nui.nvim", "nvim-notify"],
     },
   ]),
   // Highlighting and diagnostics
@@ -34,7 +34,7 @@ export default ClosedGroup(
     },
     "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
-    { repo: "shortcuts/no-neck-pain.nvim" },
+    { repo: "shortcuts/no-neck-pain.nvim", exec: "NoNeckPain" },
   ]),
   // Completion
   ...Group({ event: ["CmdlineEnter", "InsertEnter"] }, [

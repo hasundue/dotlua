@@ -8,5 +8,3 @@ vim.api.nvim_create_autocmd("User", {
     })
   end,
 })
-
-vim.keymap.set({ 'i', 'c', 't' }, '<C-j>', "<Plug>(skkeleton-toggle)")

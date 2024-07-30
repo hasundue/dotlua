@@ -19,6 +19,8 @@ export type PluginConfig<
   cmd?: string | string[];
   /** The event(s) that loads the plugin */
   event?: AutocmdEvent | AutocmdEvent[];
+  /** Execute the command when the plugin is loaded */
+  exec?: string;
   /** The plugin(s) that extended by (or depends on) this plugin */
   extends?: Rs | Rs[];
   /** The plugin(s) that this plugin depends on */

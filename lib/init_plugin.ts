@@ -89,6 +89,8 @@ export async function initPlugin(
       : undefined)
     : undefined;
 
+  const lua_post_source = spec.exec ? `vim.cmd("${spec.exec}")` : undefined;
+
   const cache = `${$CACHE}/${spec.repo}`;
   if (spec.build) {
     try {
@@ -111,6 +113,7 @@ export async function initPlugin(
     lazy: spec.lazy,
     lua_add,
     lua_source,
+    lua_post_source,
     name,
     on_cmd: spec.cmd,
     on_event: spec.event,
