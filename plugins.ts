@@ -50,6 +50,8 @@ export default ClosedGroup(
     "hrsh7th/cmp-path",
     "dcampos/cmp-snippy",
     "dcampos/nvim-snippy",
+    { repo: "rinx/cmp-skkeleton", depends: "skkeleton" },
+    { repo: "vim-skk/skkeleton", depends: "denops.vim" },
   ]),
   // Loaded when cursor moved (normal-mode plugins)
   ...Group({ event: "CursorMoved" }, [

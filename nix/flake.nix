@@ -25,6 +25,8 @@
     "plugins/cmp-path" = { url = "github:hrsh7th/cmp-path"; flake = false; };
     "plugins/cmp-snippy" = { url = "github:dcampos/cmp-snippy"; flake = false; };
     "plugins/nvim-snippy" = { url = "github:dcampos/nvim-snippy"; flake = false; };
+    "plugins/cmp-skkeleton" = { url = "github:rinx/cmp-skkeleton"; flake = false; };
+    "plugins/skkeleton" = { url = "github:vim-skk/skkeleton"; flake = false; };
     "plugins/vim-sandwich" = { url = "github:machakann/vim-sandwich"; flake = false; };
     "plugins/telescope.nvim" = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
     "plugins/oil.nvim" = { url = "github:stevearc/oil.nvim"; flake = false; };

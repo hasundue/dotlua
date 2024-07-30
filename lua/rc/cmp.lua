@@ -57,6 +57,7 @@ cmp.setup({
     { name = "buffer" },
   }, {
     { name = "emoji" },
+    { name = "skkeleton" },
   }),
 })
 
