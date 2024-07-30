@@ -15,6 +15,7 @@
     "plugins/nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     "plugins/nvim-treesitter" = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     "plugins/gitsigns.nvim" = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
+    "plugins/no-neck-pain.nvim" = { url = "github:shortcuts/no-neck-pain.nvim"; flake = false; };
     "plugins/nvim-cmp" = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
     "plugins/copilot.lua" = { url = "github:zbirenbaum/copilot.lua"; flake = false; };
     "plugins/cmp-buffer" = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
