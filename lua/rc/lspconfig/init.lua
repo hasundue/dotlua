@@ -11,6 +11,10 @@ util.on_attach(nil, function(client, bufnr)
   map('n', '<M-n>', vim.diagnostic.goto_next)
   map('n', '<M-p>', vim.diagnostic.goto_prev)
 
+  if client.name == "copilot" then
+    return
+  end
+
   if client.supports_method("hover") then
     map('n', 'K', vim.lsp.buf.hover)
   end
