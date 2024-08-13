@@ -35,6 +35,7 @@ export default ClosedGroup(
     "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
     { repo: "shortcuts/no-neck-pain.nvim", exec: "NoNeckPain" },
+    { repo: "uga-rosa/ccc.nvim", setup: "ccc" },
   ]),
   // Completion
   ...Group({ event: ["CmdlineEnter", "InsertEnter"] }, [
