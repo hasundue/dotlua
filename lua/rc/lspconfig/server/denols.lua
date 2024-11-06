@@ -1,7 +1,7 @@
 local util = require("lspconfig.util")
 
 return {
-  cmd = { "deno", "lsp", "--unstable" },
+  cmd = { "deno", "lsp" },
   root_dir = util.root_pattern("deno.lock", "deno.json", "deno.jsonc", "denops"),
   settings = {
     deno = {
