@@ -1,5 +1,37 @@
 { config, lib, pkgs, neovim-plugins, ... }:
 
+let
+  treesitter-parsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+    bash
+    c # replace the bundled one
+    diff
+    gitcommit
+    go
+    graphql
+    javascript
+    jsdoc
+    json
+    jsonc
+    lua # replace the bundled one
+    luadoc
+    make
+    markdown # replace the bundled one
+    markdown_inline
+    mermaid
+    nix
+    python
+    regex
+    ron
+    rust
+    scheme
+    tsx
+    typescript
+    vim # replace the bundled one
+    vimdoc # replace the bundled one
+    yaml
+    zig
+  ];
+in
 {
   programs.neovim = {
     enable = true;
@@ -16,35 +48,9 @@
       zls
     ];
 
-    plugins = with pkgs.vimPlugins.nvim-treesitter-parsers; [
-      bash
-      diff
-      gitcommit
-      go
-      graphql
-      # javascript
-      jsdoc
-      json
-      jsonc
-      lua
-      luadoc
-      make
-      markdown
-      markdown_inline
-      mermaid
-      # nix
-      python
-      regex
-      ron
-      rust
-      scheme
-      tsx
-      typescript
-      vim
-      vimdoc
-      yaml
-      zig
-    ];
+    plugins = with pkgs.vimPlugins; [
+      nvim-treesitter
+    ] ++ treesitter-parsers;
 
     vimdiffAlias = false;
     vimAlias = false;

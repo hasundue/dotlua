@@ -32,7 +32,6 @@ export default ClosedGroup(
       // plenary is required in our configuration
       depends: ["cmp-nvim-lsp", "noice.nvim", "plenary.nvim"],
     },
-    "nvim-treesitter/nvim-treesitter",
     { repo: "lewis6991/gitsigns.nvim", setup: "gitsigns" },
     { repo: "shortcuts/no-neck-pain.nvim", exec: "NoNeckPain" },
     { repo: "uga-rosa/ccc.nvim", setup: "ccc" },
@@ -61,7 +60,7 @@ export default ClosedGroup(
   // Commands
   {
     repo: "nvim-telescope/telescope.nvim",
-    depends: ["nvim-treesitter", "nvim-web-devicons", "plenary.nvim"],
+    depends: ["nvim-web-devicons", "plenary.nvim"],
     on: "telescope",
   },
   {

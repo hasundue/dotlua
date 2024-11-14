@@ -13,7 +13,6 @@
     "plugins/noice.nvim" = { url = "github:folke/noice.nvim"; flake = false; };
     "plugins/incline.nvim" = { url = "github:b0o/incline.nvim"; flake = false; };
     "plugins/nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
-    "plugins/nvim-treesitter" = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     "plugins/gitsigns.nvim" = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
     "plugins/no-neck-pain.nvim" = { url = "github:shortcuts/no-neck-pain.nvim"; flake = false; };
     "plugins/ccc.nvim" = { url = "github:uga-rosa/ccc.nvim"; flake = false; };
