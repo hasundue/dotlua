@@ -104,7 +104,7 @@ export async function initPlugin(
       console.log(`Building ${name}...`);
       await new CommandBuilder().command(spec.build).cwd(cache);
     } catch (e) {
-      assertInstanceOf(e, Deno.errors.AlreadyExists, e);
+      assertInstanceOf(e, Deno.errors.AlreadyExists);
     }
   }
 
