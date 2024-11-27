@@ -18,3 +18,5 @@ for _, v in ipairs {
 } do
   require("core." .. v)
 end
+
+require("gitsigns").setup()

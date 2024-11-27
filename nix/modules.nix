@@ -26,6 +26,7 @@ in
       plenary-nvim
 
       # ui
+      gitsigns-nvim
       incline-nvim
       lualine-nvim
       oil-nvim
