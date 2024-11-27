@@ -1,6 +1,6 @@
-local util = require("lib.lsp")
+local util = require("core.lsp")
 
-require("lib.lsp").setup("denols", {
+require("core.lsp").setup("denols", {
   cmd = { "deno", "lsp" },
   root_dir = util.root_pattern("deno.lock", "deno.json", "deno.jsonc", "denops"),
   settings = {

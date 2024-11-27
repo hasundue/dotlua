@@ -1,4 +1,4 @@
-require("lib.lsp").setup("rust_analyzer", {
+require("core.lsp").setup("rust_analyzer", {
   cmd = { "rust-analyzer" },
   settings = {
     ["rust-analyzer"] = {

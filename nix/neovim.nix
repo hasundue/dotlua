@@ -1,20 +1,28 @@
-{ pkgs, lib, self, ... }:
+{ pkgs, lib, ... }:
 
 let
   normalizeModule =
-    { configs ? [ ]
+    { config ? null
     , packages ? [ ]
     , plugins ? [ ]
     } @ attrs: attrs;
 
-  formatRequireLine = path:
-    let name = with lib; removePrefix (self + "/lua/") (removeSuffix ".lua" path);
-    in ''require("${name}")'';
+  toLuaModuleName = path: with lib;
+    removePrefix ((toString ../lua) + "/") (removeSuffix ".lua" (toString path));
+
+  formatRequireLine = path: ''require("${toLuaModuleName path}")'';
+
+  mergeModules = modules: with lib;
+    let
+      mergeAttr = a: b: if isList a then b ++ a else b ++ [ a ];
+      merged = foldAttrs mergeAttr [ ] (map normalizeModule modules);
+    in
+    removeAttrs merged [ "config" ] // { configs = merged.config; };
 
   wrapNeovim = { configs, packages, plugins }:
     let
       neovimConfig = pkgs.neovimUtils.makeNeovimConfig { };
-      configDir = lib.incl self (configs ++ [ (self + "/lua/lib") ]);
+      configDir = lib.incl ../. configs;
       requireLines = lib.concatLines (map formatRequireLine configs);
     in
     with pkgs; wrapNeovimUnstable neovim-unwrapped (neovimConfig // {
@@ -28,11 +36,11 @@ let
       wrapperArgs = neovimConfig.wrapperArgs
         ++ [ "--suffix" "PATH" ":" (lib.makeBinPath packages) ];
 
-      wrapRc = true;
+      wrapRc = true; # make sure to wrap the rc file for `-u` option
 
       withNodeJs = false;
       withPython3 = false;
       withRuby = false;
     });
 in
-{ modules ? [ ] }: wrapNeovim (with lib; foldAttrs concat [ ] (map normalizeModule modules))
+{ modules ? [ ] }: wrapNeovim (mergeModules modules)

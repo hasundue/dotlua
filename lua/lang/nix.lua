@@ -1,4 +1,4 @@
-require("lib.lsp").setup("nil_ls", {
+require("core.lsp").setup("nil_ls", {
   cmd = { "nil" },
   settings = {
     ["nil"] = {

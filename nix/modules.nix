@@ -1,4 +1,4 @@
-{ pkgs, self, ... } @ inputs:
+{ pkgs, ... } @ inputs:
 
 let
   plugins = import ./plugins.nix inputs;
@@ -6,7 +6,7 @@ let
 in
 {
   core = {
-    configs = [ (self + /lua/core) ];
+    config = ../lua/core;
 
     packages = with pkgs; [
       fd
@@ -54,10 +54,10 @@ in
     ];
   };
 
-  clipboard.configs = [ (self + /lua/clipboard.lua) ];
+  clipboard.config = ../lua/feat/clipboard.lua;
 
   copilot = {
-    configs = [ (self + /lua/feat/copilot.lua) ];
+    config = ../lua/feat/copilot.lua;
     packages = with pkgs; [
       nodejs
     ];
@@ -67,7 +67,7 @@ in
   };
 
   deno = {
-    configs = [ (self + /lua/deno.lua) ];
+    config = ../lua/lang/deno.lua;
     packages = with pkgs; [ deno ];
     plugins = with parsers; [
       javascript
@@ -80,7 +80,7 @@ in
   };
 
   lua = {
-    configs = [ (self + /lua/lua.lua) ];
+    config = ../lua/lang/lua.lua;
     packages = with pkgs; [
       lua-language-server
     ];
@@ -90,7 +90,7 @@ in
   };
 
   nix = {
-    configs = [ (self + /lua/nix.lua) ];
+    config = ../lua/lang/nix.lua;
     packages = with pkgs; [
       nil
       nixpkgs-fmt
@@ -101,7 +101,7 @@ in
   };
 
   rust = {
-    configs = [ (self + /lua/rust.lua) ];
+    config = ../lua/lang/rust.lua;
     packages = with pkgs; [
       rustup
       rust-analyzer

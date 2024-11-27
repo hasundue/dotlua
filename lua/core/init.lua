@@ -1,21 +1,17 @@
 -- enable experimental lua loader
 vim.loader.enable()
 
--- core configurations
-require("core.opt")
-require("core.terminal")
-
--- plugin configurations
 for _, v in ipairs {
   "cmp",
   "floaterm",
   "incline",
   "kanagawa",
-  "lspconfig",
+  "lsp",
   "lualine",
   "noice",
   "no_neck_pain",
   "oil",
+  "opt",
   "telescope",
   "terminal",
   "treesitter",
