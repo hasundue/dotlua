@@ -20,7 +20,7 @@
           inputs' = {
             inherit self;
             lib = nixpkgs.lib // { inherit incl; };
-            pkgs = import nixpkgs { inherit system; };
+            pkgs = nixpkgs.legacyPackages.${system};
             srcs = { inherit (inputs) incline-nvim; };
           };
         in
