@@ -2,6 +2,7 @@
 vim.loader.enable()
 
 for _, v in ipairs {
+  "opt",
   "cmp",
   "floaterm",
   "incline",
@@ -11,7 +12,6 @@ for _, v in ipairs {
   "noice",
   "no_neck_pain",
   "oil",
-  "opt",
   "telescope",
   "terminal",
   "treesitter",
