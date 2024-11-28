@@ -1,4 +1,4 @@
-local util = require("core.lsp")
+local util = require("lspconfig.util")
 
 require("core.lsp").setup("denols", {
   cmd = { "deno", "lsp" },
