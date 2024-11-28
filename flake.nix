@@ -17,7 +17,7 @@
     nixpkgs.lib.genAttrs [ "x86_64-linux" ]
       (system:
         let
-          inputs' = {
+          args = {
             inherit self;
             lib = nixpkgs.lib // { inherit incl; };
             pkgs = nixpkgs.legacyPackages.${system};
@@ -25,9 +25,9 @@
           };
         in
         {
-          neovim = import ./nix/neovim.nix inputs';
+          neovim = import ./nix/neovim.nix args;
         } //
-        (import ./nix/modules.nix inputs')
+        (import ./nix/modules.nix args)
       ) //
     (import ./nix/dogfood.nix (inputs // { neovim-flake = self; }));
 }

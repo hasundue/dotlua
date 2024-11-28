@@ -1,7 +1,7 @@
-{ pkgs, ... } @ inputs:
+{ pkgs, ... } @ args:
 
 let
-  plugins = import ./plugins.nix inputs;
+  plugins = import ./plugins.nix args;
   parsers = plugins.nvim-treesitter-parsers;
 in
 {
