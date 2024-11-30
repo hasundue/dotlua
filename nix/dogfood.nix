@@ -10,7 +10,7 @@ let
 in
 rec {
   packages = with neovim-flake.${system}; lib.mapAttrs
-    (name: modules: neovim { inherit modules; })
+    (name: modules: mkNeovim { inherit modules; })
     {
       default = [ core lua nix ];
       deno = [ core deno ];

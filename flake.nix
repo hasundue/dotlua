@@ -25,7 +25,7 @@
     nixpkgs.lib.genAttrs [ "x86_64-linux" ]
       (system:
         {
-          neovim = forSystem system ./nix/neovim.nix;
+          mkNeovim = forSystem system ./nix/neovim.nix;
         } //
         (forSystem system ./nix/modules.nix)
       ) //
