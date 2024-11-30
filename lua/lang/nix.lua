@@ -6,5 +6,10 @@ require("core.lsp").setup("nil_ls", {
         command = { "nixpkgs-fmt" },
       },
     },
+    nix = {
+      flake = {
+        autoArchive = true,
+      },
+    },
   },
 })
