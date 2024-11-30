@@ -14,20 +14,20 @@
   };
 
   outputs = { nixpkgs, incl, self, ... } @ inputs:
+    let
+      forSystem = system: module: (import module) {
+        inherit self;
+        lib = nixpkgs.lib // { inherit incl; };
+        pkgs = nixpkgs.legacyPackages.${system};
+        srcs = { inherit (inputs) incline-nvim; };
+      };
+    in
     nixpkgs.lib.genAttrs [ "x86_64-linux" ]
       (system:
-        let
-          args = {
-            inherit self;
-            lib = nixpkgs.lib // { inherit incl; };
-            pkgs = nixpkgs.legacyPackages.${system};
-            srcs = { inherit (inputs) incline-nvim; };
-          };
-        in
         {
-          neovim = import ./nix/neovim.nix args;
+          neovim = forSystem system ./nix/neovim.nix;
         } //
-        (import ./nix/modules.nix args)
+        (forSystem system ./nix/modules.nix)
       ) //
     (import ./nix/dogfood.nix (inputs // { neovim-flake = self; }));
 }
