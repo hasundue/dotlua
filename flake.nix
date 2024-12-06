@@ -34,12 +34,5 @@
             attrs // { all = lib.attrValues attrs; };
         }
       ) //
-    {
-      overlays = {
-        default = final: prev: {
-          mkNeovim = self.${final.system};
-        };
-      };
-    } //
     (import ./nix/dogfood.nix (inputs // { nvim-flake = self; }));
 }
