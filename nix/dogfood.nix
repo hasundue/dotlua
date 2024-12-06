@@ -18,6 +18,7 @@ rec {
       {
         default = [ lua nix ];
         deno = [ deno ];
+        full = [ deno lua nix ];
       };
 
   devShells = lib.mapAttrs
