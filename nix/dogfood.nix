@@ -1,24 +1,26 @@
 { nixpkgs
 , flake-utils
-, neovim-flake
+, nvim-flake
 , ...
 }:
 flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
 let
   pkgs = nixpkgs.legacyPackages.${system};
   lib = nixpkgs.lib;
+  nvim = nvim-flake.${system};
 in
 rec {
-  packages = with neovim-flake.${system};
-    let
-      common = [ core clipboard copilot ];
-    in
+  packages = with nvim.modules;
+    {
+      full = nvim { modules = all; };
+    } //
     lib.mapAttrs
-      (name: extra: mkNeovim { modules = common ++ extra; })
+      (name: extra: nvim {
+        modules = [ core clipboard copilot ] ++ extra;
+      })
       {
         default = [ lua nix ];
         deno = [ deno ];
-        full = [ deno lua nix ];
       };
 
   devShells = lib.mapAttrs
