@@ -23,7 +23,7 @@
         srcs = { inherit (inputs) incline-nvim; };
       };
     in
-    lib.genAttrs [ "x86_64-linux" ]
+    lib.genAttrs [ "x86_64-linux" "aarch64-linux" ]
       (system:
         {
           __functor = self: (forSystem system ./nix/neovim.nix);
